@@ -1,0 +1,109 @@
+[
+  { "from_id": "FOODON:00005478", "to_id": "FOODON:03303084", "weight": 0.80, "rationale": "Coconut milk mirrors body/creaminess of whole milk.", "role_constraint": "creaminess", "tags": ["dairy-free"] },
+  { "from_id": "FOODON:00005478", "to_id": "FOODON:03305289", "weight": 0.75, "rationale": "Soy milk is a neutral dairy alternative for sauces and batters.", "role_constraint": "creaminess", "tags": ["dairy-free"] },
+  { "from_id": "FOODON:00005478", "to_id": "FOODON:00003157", "weight": 0.70, "rationale": "Almond milk is lighter; good in curries and marinades.", "role_constraint": "creaminess", "tags": ["dairy-free"] },
+  { "from_id": "FOODON:00005485", "to_id": "FOODON:03303088", "weight": 0.80, "rationale": "Evaporated milk → coconut cream for thick, rich body.", "role_constraint": "creaminess", "tags": ["dairy-free"] },
+  { "from_id": "FOODON:00005482", "to_id": "FOODON:03303088", "weight": 0.80, "rationale": "Reduced-fat evaporated milk → coconut cream for creaminess.", "role_constraint": "creaminess", "tags": ["dairy-free"] },
+  { "from_id": "FOODON:00001017", "to_id": "FOODON:00003258", "weight": 0.90, "rationale": "Commercial yogurt ↔ strained yogurt for thicker marinades/sauces.", "role_constraint": "creaminess" },
+  { "from_id": "FOODON:00001017", "to_id": "FOODON:03303084", "weight": 0.60, "rationale": "Use coconut milk when dairy-free; add acid separately if needed.", "role_constraint": "creaminess", "tags": ["dairy-free"] },
+
+  { "from_id": "FOODON:00005582", "to_id": "FOODON:00005495", "weight": 0.85, "rationale": "Butter → clarified butter (higher smoke point).", "role_constraint": "fat" },
+  { "from_id": "FOODON:00005582", "to_id": "FOODON:03310185", "weight": 0.85, "rationale": "Butter → ghee for sauté/tempering.", "role_constraint": "fat" },
+  { "from_id": "FOODON:00005582", "to_id": "FOODON:03305263", "weight": 0.75, "rationale": "Butter → neutral vegetable oil.", "role_constraint": "fat", "tags": ["dairy-free"] },
+  { "from_id": "FOODON:00005582", "to_id": "FOODON:00002808", "weight": 0.75, "rationale": "Butter → extra-virgin olive oil (distinct flavor).", "role_constraint": "fat", "tags": ["dairy-free"] },
+  { "from_id": "FOODON:00005582", "to_id": "FOODON:03310046", "weight": 0.70, "rationale": "Butter → coconut oil for tropical notes.", "role_constraint": "fat", "tags": ["dairy-free"] },
+
+  { "from_id": "FOODON:00005495", "to_id": "FOODON:03310185", "weight": 0.95, "rationale": "Clarified butter ↔ ghee.", "role_constraint": "fat" },
+  { "from_id": "FOODON:00005495", "to_id": "FOODON:03305263", "weight": 0.75, "rationale": "Clarified butter → vegetable oil when avoiding dairy.", "role_constraint": "fat", "tags": ["dairy-free"] },
+  { "from_id": "FOODON:03310185", "to_id": "FOODON:03305263", "weight": 0.75, "rationale": "Ghee → vegetable oil for neutral sauté.", "role_constraint": "fat", "tags": ["dairy-free"] },
+  { "from_id": "FOODON:03310185", "to_id": "FOODON:00002808", "weight": 0.70, "rationale": "Ghee → olive oil for finishing.", "role_constraint": "fat", "tags": ["dairy-free"] },
+
+  { "from_id": "FOODON:03305263", "to_id": "FOODON:03311438", "weight": 0.75, "rationale": "Vegetable oil ↔ avocado oil (high smoke point).", "role_constraint": "fat" },
+  { "from_id": "FOODON:03305263", "to_id": "FOODON:03310046", "weight": 0.70, "rationale": "Vegetable oil ↔ coconut oil (flavorful).", "role_constraint": "fat" },
+  { "from_id": "FOODON:03305263", "to_id": "FOODON:00002808", "weight": 0.70, "rationale": "Vegetable oil ↔ extra-virgin olive oil.", "role_constraint": "fat" },
+  { "from_id": "FOODON:03304152", "to_id": "FOODON:03305263", "weight": 0.60, "rationale": "Sesame oil → neutral oil when sesame unavailable.", "role_constraint": "fat" },
+
+  { "from_id": "FOODON:03301705", "to_id": "FOODON:00005464", "weight": 0.80, "rationale": "Vinegar ↔ lemon juice for brightness.", "role_constraint": "acid" },
+  { "from_id": "FOODON:03301705", "to_id": "FOODON:00005465", "weight": 0.80, "rationale": "Vinegar ↔ lime juice.", "role_constraint": "acid" },
+  { "from_id": "FOODON:03301705", "to_id": "FOODON:00003674", "weight": 0.70, "rationale": "Vinegar ↔ tamarind (more fruity/sour).", "role_constraint": "acid" },
+  { "from_id": "FOODON:00005464", "to_id": "FOODON:00005465", "weight": 0.90, "rationale": "Lemon ↔ lime juice in most dishes.", "role_constraint": "acid" },
+  { "from_id": "FOODON:00005464", "to_id": "FOODON:03301705", "weight": 0.80, "rationale": "Lemon juice → vinegar if citrus absent.", "role_constraint": "acid" },
+  { "from_id": "FOODON:00005465", "to_id": "FOODON:03301705", "weight": 0.80, "rationale": "Lime juice → vinegar fallback.", "role_constraint": "acid" },
+
+  { "from_id": "FOODON:03317197", "to_id": "FOODON:03301115", "weight": 0.55, "rationale": "Fish sauce → soy sauce for salty umami (veg-friendlier).", "role_constraint": "umami", "tags": ["veg"] },
+  { "from_id": "FOODON:03317654", "to_id": "FOODON:03301115", "weight": 0.60, "rationale": "Oyster sauce → soy sauce as common pantry sub.", "role_constraint": "umami", "tags": ["veg"] },
+  { "from_id": "FOODON:03309823", "to_id": "FOODON:03317197", "weight": 0.60, "rationale": "Shrimp paste ↔ fish sauce (both seafood umami).", "role_constraint": "umami" },
+  { "from_id": "FOODON:03309823", "to_id": "FOODON:03301115", "weight": 0.45, "rationale": "Shrimp paste → soy sauce when avoiding shellfish.", "role_constraint": "umami", "tags": ["veg"] },
+
+  { "from_id": "FOODON:00003515", "to_id": "FOODON:00003517", "weight": 0.90, "rationale": "Red onion ↔ yellow onion.", "role_constraint": "aromatic" },
+  { "from_id": "FOODON:00003515", "to_id": "FOODON:00003518", "weight": 0.85, "rationale": "Red onion ↔ white onion.", "role_constraint": "aromatic" },
+  { "from_id": "FOODON:00003517", "to_id": "FOODON:00003518", "weight": 0.85, "rationale": "Yellow onion ↔ white onion.", "role_constraint": "aromatic" },
+  { "from_id": "FOODON:00003517", "to_id": "FOODON:00003697", "weight": 0.60, "rationale": "Yellow onion → scallion (milder allium).", "role_constraint": "aromatic" },
+
+  { "from_id": "FOODON:03301453", "to_id": "FOODON:03301452", "weight": 0.85, "rationale": "Fresh tomato ↔ canned tomato.", "role_constraint": "bulk-veg" },
+  { "from_id": "FOODON:03301453", "to_id": "FOODON:03301457", "weight": 0.70, "rationale": "Fresh tomato → tomato puree for body.", "role_constraint": "bulk-veg" },
+  { "from_id": "FOODON:03301457", "to_id": "FOODON:03301455", "weight": 0.80, "rationale": "Tomato puree ↔ tomato paste (concentrated).", "role_constraint": "bulk-veg" },
+
+  { "from_id": "FOODON:00003744", "to_id": "FOODON:00004163", "weight": 0.70, "rationale": "Fresh chili → capsicum/chili powder.", "role_constraint": "spice-chili" },
+  { "from_id": "FOODON:00004163", "to_id": "FOODON:00003744", "weight": 0.70, "rationale": "Chili powder → fresh chili.", "role_constraint": "spice-chili" },
+  { "from_id": "FOODON:03306739", "to_id": "FOODON:03304045", "weight": 0.60, "rationale": "Black pepper ↔ white pepper.", "role_constraint": "spice-warm" },
+  { "from_id": "FOODON:00003396", "to_id": "FOODON:03301842", "weight": 0.50, "rationale": "Cumin seed → curry powder (blend includes cumin).", "role_constraint": "spice-warm" },
+  { "from_id": "FOODON:03301223", "to_id": "FOODON:00003546", "weight": 0.55, "rationale": "Paprika → sweet bell pepper for mild color/flavor.", "role_constraint": "bulk-veg" },
+
+  { "from_id": "FOODON:03000122", "to_id": "FOODON:00002942", "weight": 0.60, "rationale": "Curry leaf → parsley (garnish-only fallback).", "role_constraint": "herb" },
+  { "from_id": "FOODON:03000122", "to_id": "FOODON:03000029", "weight": 0.65, "rationale": "Curry leaf → coriander leaf (fresh herbal note).", "role_constraint": "herb" },
+  { "from_id": "FOODON:03000029", "to_id": "FOODON:00002942", "weight": 0.60, "rationale": "Coriander leaf ↔ parsley leaf for garnish.", "role_constraint": "herb" },
+  { "from_id": "FOODON:03000029", "to_id": "FOODON:03000121", "weight": 0.50, "rationale": "Coriander leaf ↔ mint (freshness swap).", "role_constraint": "herb" },
+
+  { "from_id": "FOODON:00005327", "to_id": "FOODON:00003495", "weight": 0.80, "rationale": "Moringa leaf ↔ spinach leaf in brède dishes.", "role_constraint": "leafy-green" },
+  { "from_id": "FOODON:00003495", "to_id": "FOODON:00003501", "weight": 0.70, "rationale": "Spinach ↔ kale leaf (sturdier greens).", "role_constraint": "leafy-green" },
+  { "from_id": "FOODON:00001703", "to_id": "FOODON:00003410", "weight": 0.85, "rationale": "Cauliflower product ↔ cauliflower floret.", "role_constraint": "bulk-veg" },
+
+  { "from_id": "FOODON:00003618", "to_id": "FOODON:00002448", "weight": 0.70, "rationale": "Eggplant ↔ zucchini for sauté/curry bulk.", "role_constraint": "bulk-veg" },
+  { "from_id": "FOODON:00003618", "to_id": "FOODON:00002064", "weight": 0.50, "rationale": "Eggplant → okra in stews (different texture).", "role_constraint": "bulk-veg" },
+  { "from_id": "FOODON:00002180", "to_id": "FOODON:00002981", "weight": 0.85, "rationale": "Pumpkin ↔ butternut squash.", "role_constraint": "bulk-veg" },
+
+  { "from_id": "FOODON:00001935", "to_id": "FOODON:00002191", "weight": 0.90, "rationale": "Green ↔ red bell pepper.", "role_constraint": "bulk-veg" },
+  { "from_id": "FOODON:00001935", "to_id": "FOODON:00003012", "weight": 0.90, "rationale": "Green ↔ yellow bell pepper.", "role_constraint": "bulk-veg" },
+  { "from_id": "FOODON:00002191", "to_id": "FOODON:00003012", "weight": 0.90, "rationale": "Red ↔ yellow bell pepper.", "role_constraint": "bulk-veg" },
+
+  { "from_id": "FOODON:03301668", "to_id": "FOODON:03301667", "weight": 0.85, "rationale": "Canned tuna generic ↔ yellowfin tuna (canned).", "role_constraint": "protein-main" },
+  { "from_id": "FOODON:03301668", "to_id": "FOODON:03301166", "weight": 0.85, "rationale": "Canned tuna generic ↔ skipjack tuna (canned).", "role_constraint": "protein-main" },
+  { "from_id": "FOODON:00002742", "to_id": "FOODON:03412198", "weight": 0.60, "rationale": "Tuna fillet ↔ kingfish in grills/curries.", "role_constraint": "protein-main" },
+  { "from_id": "FOODON:00002742", "to_id": "FOODON:03309567", "weight": 0.60, "rationale": "Tuna ↔ marlin (similar firm steak fish).", "role_constraint": "protein-main" },
+
+  { "from_id": "FOODON:03307015", "to_id": "FOODON:03411237", "weight": 0.95, "rationale": "Prawn ↔ shrimp.", "role_constraint": "protein-main" },
+  { "from_id": "FOODON:03301706", "to_id": "FOODON:03301703", "weight": 0.50, "rationale": "Mussel ↔ oyster (bivalves).", "role_constraint": "protein-main" },
+  { "from_id": "FOODON:03310077", "to_id": "FOODON:03310498", "weight": 0.70, "rationale": "Squid ↔ octopus in stir-fries/curry (texture differs).", "role_constraint": "protein-main" },
+
+  { "from_id": "FOODON:02021072", "to_id": "FOODON:02021140", "weight": 0.65, "rationale": "Goat ↔ lamb in stews and biryani.", "role_constraint": "protein-main" },
+  { "from_id": "FOODON:02021140", "to_id": "FOODON:02021072", "weight": 0.65, "rationale": "Lamb ↔ goat for similar spice profiles.", "role_constraint": "protein-main" },
+  { "from_id": "FOODON:03311826", "to_id": "FOODON:00001282", "weight": 0.55, "rationale": "Ground chicken ↔ ground beef (flavor/lean differs).", "role_constraint": "protein-main" },
+  { "from_id": "FOODON:03303004", "to_id": "FOODON:03302091", "weight": 0.60, "rationale": "Chicken broth ↔ beef broth.", "role_constraint": "broth" },
+
+  { "from_id": "FOODON:00002958", "to_id": "FOODON:00002729", "weight": 0.60, "rationale": "Beef sausage ↔ pork sausage (seasoning similar).", "role_constraint": "protein-main" },
+
+  { "from_id": "FOODON:00005487", "to_id": "FOODON:03305263", "weight": 0.60, "rationale": "Beef tallow → vegetable oil (neutral).", "role_constraint": "fat" },
+  { "from_id": "FOODON:00005487", "to_id": "FOODON:03310046", "weight": 0.60, "rationale": "Beef tallow → coconut oil for solid fat needs.", "role_constraint": "fat" },
+
+  { "from_id": "FOODON:03301847", "to_id": "FOODON:00005514", "weight": 0.60, "rationale": "Cane syrup ↔ powdered sugar (adjust liquid).", "role_constraint": "sweetener" },
+  { "from_id": "FOODON:03301847", "to_id": "FOODON:03305288", "weight": 0.60, "rationale": "Cane syrup ↔ sugar cane juice (reduce liquid elsewhere).", "role_constraint": "sweetener" },
+  { "from_id": "FOODON:00005514", "to_id": "FOODON:03301847", "weight": 0.60, "rationale": "Powdered sugar → cane syrup (adds moisture).", "role_constraint": "sweetener" },
+
+  { "from_id": "FOODON:00004320", "to_id": "FOODON:00004677", "weight": 0.90, "rationale": "Cooked rice ↔ cooked white rice (basmati proxy).", "role_constraint": "starch" },
+  { "from_id": "FOODON:00004320", "to_id": "FOODON:03401100", "weight": 0.40, "rationale": "Cooked rice → ready-to-eat noodles (fusion fallback).", "role_constraint": "starch" },
+  { "from_id": "FOODON:00003786", "to_id": "FOODON:00004320", "weight": 0.80, "rationale": "Long grain rice kernel → cooked rice.", "role_constraint": "starch" },
+
+  { "from_id": "FOODON:03301224", "to_id": "FOODON:03301176", "weight": 0.55, "rationale": "Cinnamon stick ↔ clove (both warm, whole spices).", "role_constraint": "spice-warm" },
+  { "from_id": "FOODON:03301224", "to_id": "FOODON:00003502", "weight": 0.55, "rationale": "Cinnamon stick ↔ star anise for biryani/vindaye aromatics.", "role_constraint": "spice-warm" },
+
+  { "from_id": "FOODON:00003753", "to_id": "FOODON:00002323", "weight": 0.85, "rationale": "Turmeric root ↔ turmeric food product (ground).", "role_constraint": "spice-warm" },
+  { "from_id": "FOODON:00003021", "to_id": "FOODON:00002323", "weight": 0.85, "rationale": "Fresh turmeric ↔ ground turmeric.", "role_constraint": "spice-warm" },
+
+  { "from_id": "FOODON:03301842", "to_id": "FOODON:00003396", "weight": 0.50, "rationale": "Curry powder → extra cumin emphasis if blend absent.", "role_constraint": "spice-warm" },
+
+  { "from_id": "FOODON:00003697", "to_id": "FOODON:00003517", "weight": 0.60, "rationale": "Scallion → yellow onion when bulk allium needed.", "role_constraint": "aromatic" },
+
+  { "from_id": "FOODON:03301115", "to_id": "FOODON:03317654", "weight": 0.60, "rationale": "Soy sauce → oyster sauce for thicker, sweeter umami.", "role_constraint": "umami" },
+  { "from_id": "FOODON:03301115", "to_id": "FOODON:03317197", "weight": 0.55, "rationale": "Soy sauce → fish sauce for sharper salty umami.", "role_constraint": "umami" }
+]

@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0.0",
+  "kinds": ["mass", "volume", "length", "temperature", "count"],
+  "base_units": {
+    "mass": "g",
+    "volume": "ml",
+    "length": "mm",
+    "temperature": "c",
+    "count": "unit"
+  },
+  "units": {
+    "mg": { "kind": "mass", "to_base": 0.001, "system": "metric", "aliases": ["milligram", "milligrams"] },
+    "g": { "kind": "mass", "to_base": 1, "system": "metric", "aliases": ["gram", "grams"] },
+    "kg": { "kind": "mass", "to_base": 1000, "system": "metric", "aliases": ["kilogram", "kilograms", "kilo"] },
+    "oz": { "kind": "mass", "to_base": 28.349523125, "system": "us", "aliases": ["ounce", "ounces"] },
+    "lb": { "kind": "mass", "to_base": 453.59237, "system": "us", "aliases": ["pound", "pounds", "lbs"] },
+    "stick-butter-us": { "kind": "mass", "to_base": 113, "system": "us", "aliases": ["stick", "stick of butter"], "notes": "US stick ≈ 113 g; 1/2 cup" },
+
+    "ml": { "kind": "volume", "to_base": 1, "system": "metric", "aliases": ["milliliter", "millilitre", "milliliters", "millilitres", "cc"] },
+    "l": { "kind": "volume", "to_base": 1000, "system": "metric", "aliases": ["liter", "litre", "liters", "litres"] },
+
+    "tsp": { "kind": "volume", "to_base": 5, "system": "metric", "aliases": ["teaspoon", "teaspoons", "càc", "cac", "c.c.", "cuillère à café", "cuil. à café"] },
+    "tbsp": { "kind": "volume", "to_base": 15, "system": "metric", "aliases": ["tablespoon", "tablespoons", "càs", "c.à.s.", "c.s.", "cas", "cuillère à soupe", "cuil. à soupe"] },
+
+    "tsp-us": { "kind": "volume", "to_base": 4.9289215938, "system": "us", "aliases": ["teaspoon (US)"] },
+    "tbsp-us": { "kind": "volume", "to_base": 14.786764781, "system": "us", "aliases": ["tablespoon (US)"] },
+    "floz": { "kind": "volume", "to_base": 29.5735295625, "system": "us", "aliases": ["fl oz", "fluid ounce", "fluid ounces"] },
+    "cup-us": { "kind": "volume", "to_base": 240, "system": "us", "aliases": ["cup", "cups"] },
+    "pt-us": { "kind": "volume", "to_base": 473.176473, "system": "us", "aliases": ["pint", "pints"] },
+    "qt-us": { "kind": "volume", "to_base": 946.352946, "system": "us", "aliases": ["quart", "quarts"] },
+    "gal-us": { "kind": "volume", "to_base": 3785.411784, "system": "us", "aliases": ["gallon", "gallons"] },
+
+    "cup-metric": { "kind": "volume", "to_base": 250, "system": "metric", "aliases": ["metric cup"] },
+    "dl": { "kind": "volume", "to_base": 100, "system": "metric", "aliases": ["deciliter", "decilitre", "dl."] },
+
+    "floz-uk": { "kind": "volume", "to_base": 28.4130625, "system": "uk", "aliases": ["fluid ounce (UK)"] },
+    "pt-uk": { "kind": "volume", "to_base": 568.26125, "system": "uk", "aliases": ["pint (UK)"] },
+
+    "pinch": { "kind": "volume", "to_base": 0.36, "system": "culinary", "aliases": ["pincée", "ti pincée"], "approx": true },
+    "dash": { "kind": "volume", "to_base": 0.92, "system": "culinary", "aliases": ["trait", "ti goutte"], "approx": true },
+    "handful": { "kind": "volume", "to_base": 30, "system": "culinary", "aliases": ["poignée"], "approx": true },
+    "glass": { "kind": "volume", "to_base": 200, "system": "culinary", "aliases": ["verre"], "approx": true },
+    "bowl": { "kind": "volume", "to_base": 350, "system": "culinary", "aliases": ["bol"], "approx": true },
+
+    "mm": { "kind": "length", "to_base": 1, "system": "metric", "aliases": ["millimeter", "millimetre"] },
+    "cm": { "kind": "length", "to_base": 10, "system": "metric", "aliases": ["centimeter", "centimetre"] },
+    "inch": { "kind": "length", "to_base": 25.4, "system": "us", "aliases": ["in", "inches"] },
+
+    "c": { "kind": "temperature", "system": "metric", "to_base_formula": "x", "from_base_formula": "x" },
+    "f": { "kind": "temperature", "system": "us", "to_base_formula": "(x-32)/1.8", "from_base_formula": "(x*1.8)+32" },
+    "k": { "kind": "temperature", "system": "si", "to_base_formula": "x-273.15", "from_base_formula": "x+273.15" },
+
+    "unit": { "kind": "count", "to_base": 1, "system": "generic", "aliases": ["pcs", "piece", "pieces"] },
+    "clove": { "kind": "count", "to_base": 1, "system": "culinary", "aliases": ["gousse", "gousses", "cloves"], "notes": "Garlic clove" },
+    "sprig": { "kind": "count", "to_base": 1, "system": "culinary", "aliases": ["brin", "sprigs"] },
+    "bunch": { "kind": "count", "to_base": 1, "system": "culinary", "aliases": ["botte", "bouquet", "bunches"], "approx": true },
+    "leaf": { "kind": "count", "to_base": 1, "system": "culinary", "aliases": ["feuille", "feuilles", "leaves"] },
+    "pod": { "kind": "count", "to_base": 1, "system": "culinary", "aliases": ["gousse (cardamome)", "gousse (vanille)", "pods"] },
+    "stick": { "kind": "count", "to_base": 1, "system": "culinary", "aliases": ["baton", "bâton", "sticks"], "notes": "e.g., cinnamon stick" },
+
+    "can": { "kind": "volume", "to_base": 400, "system": "package", "aliases": ["tin"], "approx": true, "notes": "Common canned tomato/coconut milk size ~400 ml" },
+    "can-small": { "kind": "volume", "to_base": 200, "system": "package", "aliases": ["small can"], "approx": true },
+    "jar": { "kind": "volume", "to_base": 350, "system": "package", "aliases": ["bocal"], "approx": true },
+    "bottle": { "kind": "volume", "to_base": 500, "system": "package", "aliases": ["bouteille"], "approx": true },
+    "packet": { "kind": "mass", "to_base": 10, "system": "package", "aliases": ["sachet"], "approx": true, "notes": "Typical yeast/spice sachet ~7–10 g" }
+  },
+  "alias_overrides": {
+    "cup": "cup-us",
+    "tablespoon": "tbsp",
+    "teaspoon": "tsp",
+    "fl oz": "floz"
+  },
+  "formatting": {
+    "plural_rules": {
+      "unit": "units",
+      "clove": "cloves",
+      "sprig": "sprigs",
+      "bunch": "bunches",
+      "leaf": "leaves",
+      "pod": "pods",
+      "stick": "sticks"
+    },
+    "symbols": {
+      "g": "g",
+      "kg": "kg",
+      "mg": "mg",
+      "ml": "ml",
+      "l": "L",
+      "tsp": "tsp",
+      "tbsp": "tbsp",
+      "cup-us": "cup",
+      "floz": "fl oz",
+      "oz": "oz",
+      "lb": "lb",
+      "c": "°C",
+      "f": "°F"
+    }
+  },
+  "notes": [
+    "Default base is metric (g, ml, mm, °C, unit).",
+    "For teaspoons/tablespoons, we default to metric sizes (5 ml, 15 ml). Use tsp-us/tbsp-us to preserve US volumes.",
+    "Cup default is US 240 ml. Use cup-metric for 250 ml or UK pint/oz where needed.",
+    "Containers (can/jar/bottle/packet) are approximations and should be overridden per ingredient/recipe when known.",
+    "Handful/pinch/dash/glass/bowl are approximate helpers for natural-language inputs; mark them as ~ when displaying."
+  ]
+}

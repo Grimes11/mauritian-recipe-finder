@@ -1,0 +1,519 @@
+[
+ {
+    "title": "Mauritian Chicken Biryani",
+    "ingredients": [
+      { "id": "FOODON:00004320", "qty": "500 g" },
+      { "id": "FOODON:02020149", "qty": "1 kg" },
+      { "id": "FOODON:03301704", "qty": "3" },
+      { "id": "FOODON:03301453", "qty": "3" },
+      { "id": "FOODON:03303396", "qty": "2 tsp" },
+      { "id": "FOODON:00003502", "qty": "2 whole" },
+      { "id": "FOODON:03301175", "qty": "2 sticks" },
+      { "id": "FOODON:03301176", "qty": "4" },
+      { "id": "FOODON:00001683", "qty": "4 pods" },
+      { "id": "FOODON:03316426", "qty": "1/2 tsp" },
+      { "id": "FOODON:03301455", "qty": "2 tbsp" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301705", "qty": "2 tbsp" },
+      { "id": "FOODON:00002981", "qty": "2" },
+      { "id": "FOODON:03305263", "qty": "100 ml" },
+      { "id": "FOODON:03302459", "qty": "to taste" },
+      { "id": "FOODON:03302458", "qty": "100 g" },
+      { "id": "FOODON:03316399", "qty": "1 tbsp" },
+      { "id": "FOODON:00003753", "qty": "1 tbsp" },
+      { "id": "FOODON:00003620", "qty": "1 bunch" },
+      { "id": "FOODON:03000121", "qty": "1 bunch" },
+      { "id": "FOODON:00002942", "qty": "1 bunch" },
+      { "id": "FOODON:00003661", "qty": "2" }
+    ],
+    "steps": [
+      "Wash rice (FOODON:00004320), soak, and parboil with star anise, cinnamon, and cloves.",
+      "Marinate chicken (FOODON:02020149) with garlic, ginger, yogurt or vinegar, cumin, turmeric, curry powder, and salt. Let it rest 1 hour.",
+      "Fry onions (FOODON:03301704) until golden. Reserve half for garnishing.",
+      "Cook marinated chicken with tomatoes, tomato paste, parsley, and mint leaves until fragrant and slightly reduced.",
+      "Layer half the rice at the bottom of a large pot, add chicken mixture, potatoes, then top with remaining rice.",
+      "Sprinkle fried onions, mint, parsley, lime juice, and optional saffron essence (can map later if added to FoodOn).",
+      "Seal pot and cook on low heat (dum) until rice is fluffy and flavors are infused.",
+      "Serve hot with cucumber raita or tomato chutney."
+    ]
+  },
+  {
+    "title": "Rougaille Saucisse",
+    "ingredients": [
+      { "id": "FOODON:00002958", "qty": "4" },
+      { "id": "FOODON:03301453", "qty": "3" },
+      { "id": "FOODON:03301704", "qty": "2" },
+      { "id": "FOODON:03305217", "qty": "1 tbsp" }
+    ]
+  },
+  {
+    "title": "Fish Vindaye",
+    "ingredients": [
+      { "id": "FOODON:00002742", "qty": "500 g" },
+      { "id": "FOODON:03301705", "qty": "2 tbsp" },
+      { "id": "FOODON:00003396", "qty": "1 tbsp" },
+      { "id": "FOODON:03301453", "qty": "2" }
+    ]
+  },
+  {
+    "title": "Octopus Vindaye",
+    "ingredients": [
+      { "id": "FOODON:03310498", "qty": "500 g" },
+      { "id": "FOODON:03301705", "qty": "3 tbsp" },
+      { "id": "FOODON:03301842", "qty": "1 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Chicken Curry",
+    "ingredients": [
+      { "id": "FOODON:02020149", "qty": "500 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301453", "qty": "2" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Beef Curry",
+    "ingredients": [
+      { "id": "FOODON:00001282", "qty": "500 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301453", "qty": "2" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Pork Curry",
+    "ingredients": [
+      { "id": "FOODON:00002570", "qty": "500 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301453", "qty": "2" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Fish Curry",
+    "ingredients": [
+      { "id": "FOODON:00002742", "qty": "500 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301453", "qty": "2" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Shrimp Rougaille",
+    "ingredients": [
+      { "id": "FOODON:03307015", "qty": "300 g" },
+      { "id": "FOODON:03301453", "qty": "3" },
+      { "id": "FOODON:03301704", "qty": "1" },
+      { "id": "FOODON:03305217", "qty": "1 tbsp" }
+    ]
+  },
+  {
+    "title": "Smoked Marlin Salad",
+    "ingredients": [
+      { "id": "FOODON:03304348", "qty": "200 g" },
+      { "id": "FOODON:00003423", "qty": "5 leaves" },
+      { "id": "FOODON:00003320", "qty": "1" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Sautéed Brèdes Mouroum",
+    "ingredients": [
+      { "id": "FOODON:00005327", "qty": "1 bunch" },
+      { "id": "FOODON:03301704", "qty": "1" },
+      { "id": "FOODON:03305263", "qty": "2 tbsp" }
+    ]
+  },
+  {
+    "title": "Mine Frite (Mauritian Fried Noodles)",
+    "ingredients": [
+      { "id": "FOODON:03401095", "qty": "300 g" },
+      { "id": "FOODON:03301704", "qty": "1" },
+      { "id": "FOODON:03301115", "qty": "2 tbsp" },
+      { "id": "FOODON:03307015", "qty": "150 g" }
+    ]
+  },
+  {
+    "title": "Bol Renversé",
+    "ingredients": [
+      { "id": "FOODON:03401095", "qty": "200 g" },
+      { "id": "FOODON:02020149", "qty": "200 g" },
+      { "id": "FOODON:03301704", "qty": "1" },
+      { "id": "FOODON:03301453", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Bouillon Brèdes",
+    "ingredients": [
+      { "id": "FOODON:00003495", "qty": "1 bunch" },
+      { "id": "FOODON:03301704", "qty": "1" },
+      { "id": "FOODON:03544059", "qty": "1 tsp" }
+    ]
+  },
+  {
+    "title": "Farata (Mauritian Paratha)",
+    "ingredients": [
+      { "id": "FOODON:03302798", "qty": "400 g" },
+      { "id": "FOODON:03544059", "qty": "1 tsp" },
+      { "id": "FOODON:03305263", "qty": "2 tbsp" },
+      { "id": "FOODON:00004429", "qty": "150 ml" }
+    ]
+  },
+  {
+    "title": "Dal Puri (Yellow Split Pea Flatbread)",
+    "ingredients": [
+      { "id": "FOODON:03302798", "qty": "400 g" },
+      { "id": "FOODON:00005336", "qty": "200 g" },
+      { "id": "FOODON:03306739", "qty": "1 tsp" },
+      { "id": "FOODON:03544059", "qty": "1 tsp" }
+    ]
+  },
+  {
+    "title": "Dholl Curry",
+    "ingredients": [
+      { "id": "FOODON:00005336", "qty": "250 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" },
+      { "id": "FOODON:03305217", "qty": "1 tbsp" }
+    ]
+  },
+  {
+    "title": "Cari Banane (Green Banana Curry)",
+    "ingredients": [
+      { "id": "FOODON:00003784", "qty": "6" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301453", "qty": "2" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Cari Bringelle (Eggplant Curry)",
+    "ingredients": [
+      { "id": "FOODON:00003618", "qty": "2" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301453", "qty": "3" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+    {
+    "title": "Cari Chouchou (Chayote Curry)",
+    "ingredients": [
+      { "id": "FOODON:00003408", "qty": "2" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Cari Lalo (Taro Leaves Curry)",
+    "ingredients": [
+      { "id": "FOODON:00003495", "qty": "1 bunch" },
+      { "id": "FOODON:03301842", "qty": "1 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Cari Pomme de Terre (Potato Curry)",
+    "ingredients": [
+      { "id": "FOODON:00002796", "qty": "4" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Cari Pois (Green Pea Curry)",
+    "ingredients": [
+      { "id": "FOODON:00005336", "qty": "200 g" },
+      { "id": "FOODON:03301842", "qty": "1 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Cari Ti Pois Carri (Pigeon Pea Curry)",
+    "ingredients": [
+      { "id": "FOODON:03301300", "qty": "200 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Cari Ourite (Octopus Curry)",
+    "ingredients": [
+      { "id": "FOODON:03310498", "qty": "400 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301705", "qty": "2 tbsp" }
+    ]
+  },
+  {
+    "title": "Cari Crabe (Crab Curry)",
+    "ingredients": [
+      { "id": "FOODON:03411498", "qty": "3 crabs" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301705", "qty": "2 tbsp" }
+    ]
+  },
+  {
+    "title": "Cari Camaron (Freshwater Prawn Curry)",
+    "ingredients": [
+      { "id": "FOODON:03307015", "qty": "300 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Cari Cabri (Goat Curry)",
+    "ingredients": [
+      { "id": "FOODON:00001282", "qty": "500 g" },
+      { "id": "FOODON:03301842", "qty": "3 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Cari Lapin (Rabbit Curry)",
+    "ingredients": [
+      { "id": "FOODON:02022098", "qty": "500 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Cari Canard (Duck Curry)",
+    "ingredients": [
+      { "id": "FOODON:02020142", "qty": "500 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Cari Dinde (Turkey Curry)",
+    "ingredients": [
+      { "id": "FOODON:02022098", "qty": "500 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Boulettes Soup (Mauritian Dim Sum Soup)",
+    "ingredients": [
+      { "id": "FOODON:03307015", "qty": "200 g" },
+      { "id": "FOODON:03301704", "qty": "1" },
+      { "id": "FOODON:03301115", "qty": "1 tbsp" }
+    ]
+  },
+  {
+    "title": "Haleem (Mauritian Lentil Stew)",
+    "ingredients": [
+      { "id": "FOODON:00005336", "qty": "150 g" },
+      { "id": "FOODON:03301300", "qty": "100 g" },
+      { "id": "FOODON:00004320", "qty": "50 g" }
+    ]
+  },
+  {
+    "title": "Kalia (Mauritian Beef Curry)",
+    "ingredients": [
+      { "id": "FOODON:00001282", "qty": "400 g" },
+      { "id": "FOODON:03301842", "qty": "3 tbsp" },
+      { "id": "FOODON:03301704", "qty": "2" },
+      { "id": "FOODON:03301844", "qty": "1 tsp" }
+    ]
+  },
+  {
+    "title": "Cari Masala Poisson (Fish Masala Curry)",
+    "ingredients": [
+      { "id": "FOODON:00002742", "qty": "500 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301453", "qty": "2" }
+    ]
+  },
+  {
+    "title": "Cari Kalia Poulet (Chicken Kalia)",
+    "ingredients": [
+      { "id": "FOODON:02020149", "qty": "500 g" },
+      { "id": "FOODON:03301842", "qty": "3 tbsp" },
+      { "id": "FOODON:03301704", "qty": "2" }
+    ]
+  },
+  {
+    "title": "Cari Ourite Lait Coco (Octopus in Coconut Milk Curry)",
+    "ingredients": [
+      { "id": "FOODON:03310498", "qty": "400 g" },
+      { "id": "FOODON:03303084", "qty": "200 ml" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" }
+    ]
+  },
+  {
+    "title": "Cari Poisson Lait Coco (Fish in Coconut Milk Curry)",
+    "ingredients": [
+      { "id": "FOODON:00002742", "qty": "500 g" },
+      { "id": "FOODON:03303084", "qty": "200 ml" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" }
+    ]
+  },
+  {
+    "title": "Cari Camaron Lait Coco (Prawn in Coconut Milk Curry)",
+    "ingredients": [
+      { "id": "FOODON:03307015", "qty": "300 g" },
+      { "id": "FOODON:03303084", "qty": "200 ml" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" }
+    ]
+  },
+    {
+    "title": "Cari Poisson Salé (Salted Fish Curry)",
+    "ingredients": [
+      { "id": "FOODON:03301166", "qty": "200 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Cari Bringelle (Eggplant Curry)",
+    "ingredients": [
+      { "id": "FOODON:00003618", "qty": "2" },
+      { "id": "FOODON:03301842", "qty": "1 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Cari Giraumon (Pumpkin Curry)",
+    "ingredients": [
+      { "id": "FOODON:00002180", "qty": "300 g" },
+      { "id": "FOODON:03301842", "qty": "1 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Cari Légumes Mélangés (Mixed Vegetable Curry)",
+    "ingredients": [
+      { "id": "FOODON:00003408", "qty": "1" },
+      { "id": "FOODON:00002796", "qty": "2" },
+      { "id": "FOODON:00003495", "qty": "1 bunch" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" }
+    ]
+  },
+  {
+    "title": "Cari Ti Pois Brinzel (Pigeon Pea with Eggplant Curry)",
+    "ingredients": [
+      { "id": "FOODON:03301300", "qty": "200 g" },
+      { "id": "FOODON:00003618", "qty": "1" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" }
+    ]
+  },
+  {
+    "title": "Cari Bred Mouroum (Moringa Leaves Curry)",
+    "ingredients": [
+      { "id": "FOODON:00005327", "qty": "1 bunch" },
+      { "id": "FOODON:03301842", "qty": "1 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Cari Bred Martin (Spinach Curry)",
+    "ingredients": [
+      { "id": "FOODON:00003495", "qty": "1 bunch" },
+      { "id": "FOODON:03301842", "qty": "1 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Cari Calou (Watercress Curry)",
+    "ingredients": [
+      { "id": "FOODON:03000033", "qty": "1 bunch" },
+      { "id": "FOODON:03301842", "qty": "1 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Cari Tofu (Tofu Curry)",
+    "ingredients": [
+      { "id": "FOODON:00005486", "qty": "200 g" },
+      { "id": "FOODON:03301842", "qty": "1 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Cari Paneer (Indian Cheese Curry)",
+    "ingredients": [
+      { "id": "FOODON:03601045", "qty": "200 g" },
+      { "id": "FOODON:03301842", "qty": "1 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Roti Cari Gros Pois (Flatbread with Broad Bean Curry)",
+    "ingredients": [
+      { "id": "FOODON:03301300", "qty": "200 g" },
+      { "id": "FOODON:03302459", "qty": "4 rotis" },
+      { "id": "FOODON:03301842", "qty": "1 tbsp" }
+    ]
+  },
+  {
+    "title": "Farata with Cari Legumes",
+    "ingredients": [
+      { "id": "FOODON:03302460", "qty": "4 faratas" },
+      { "id": "FOODON:00003408", "qty": "2" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" }
+    ]
+  },
+  {
+    "title": "Roti with Cari Poulet",
+    "ingredients": [
+      { "id": "FOODON:02020149", "qty": "200 g" },
+      { "id": "FOODON:03302459", "qty": "4 rotis" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" }
+    ]
+  },
+  {
+    "title": "Bol Renversé (Upside Down Bowl)",
+    "ingredients": [
+      { "id": "FOODON:02020149", "qty": "200 g" },
+      { "id": "FOODON:03401095", "qty": "100 g" },
+      { "id": "FOODON:03301704", "qty": "1" },
+      { "id": "FOODON:03301705", "qty": "1 tbsp" }
+    ]
+  },
+  {
+    "title": "Mine Frit Poulet (Chicken Fried Noodles)",
+    "ingredients": [
+      { "id": "FOODON:03401095", "qty": "200 g" },
+      { "id": "FOODON:02020149", "qty": "150 g" },
+      { "id": "FOODON:03301704", "qty": "1" },
+      { "id": "FOODON:03301115", "qty": "1 tbsp" }
+    ]
+  },
+  {
+    "title": "Mine Frit Boeuf (Beef Fried Noodles)",
+    "ingredients": [
+      { "id": "FOODON:03401095", "qty": "200 g" },
+      { "id": "FOODON:00001282", "qty": "150 g" },
+      { "id": "FOODON:03301704", "qty": "1" },
+      { "id": "FOODON:03301115", "qty": "1 tbsp" }
+    ]
+  },
+  {
+    "title": "Mine Frit Légumes (Vegetarian Fried Noodles)",
+    "ingredients": [
+      { "id": "FOODON:03401095", "qty": "200 g" },
+      { "id": "FOODON:00003408", "qty": "1" },
+      { "id": "FOODON:03301704", "qty": "1" },
+      { "id": "FOODON:03301115", "qty": "1 tbsp" }
+    ]
+  },
+  {
+    "title": "Bouillon Légumes (Vegetable Soup)",
+    "ingredients": [
+      { "id": "FOODON:00003408", "qty": "2" },
+      { "id": "FOODON:00003495", "qty": "1 bunch" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ]
+  },
+  {
+    "title": "Bouillon Poisson (Fish Soup)",
+    "ingredients": [
+      { "id": "FOODON:00002742", "qty": "200 g" },
+      { "id": "FOODON:03301704", "qty": "1" },
+      { "id": "FOODON:03301115", "qty": "1 tbsp" }
+    ]
+  }
+]
+
