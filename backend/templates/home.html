@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Home · Mauritian Recipe Finder{% endblock %}
+
+{% block content %}
+<section class="section hero">
+  <div class="card hero-card">
+    <div class="hero-card__body">
+      <h1 class="h2">Welcome to Mauritian Recipe Finder</h1>
+      <p class="muted">
+        Explore delicious Mauritian recipes that suit your pantry.
+      </p>
+      <div class="actions">
+        <a class="btn btn-secondary" href="#" aria-disabled="true">Explore Categories</a>
+        <a class="btn btn-primary" href="/search">Start Cooking</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="h3">Popular Recipes</h2>
+  <div id="popular-list" class="list cards-grid">
+    {# Filled by main.js (fetches /recipes, shows top items) #}
+    <div class="skeleton card"></div>
+    <div class="skeleton card"></div>
+    <div class="skeleton card"></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="h3">Latest Recipes</h2>
+  <div id="latest-list" class="list cards-grid">
+    <div class="skeleton card"></div>
+    <div class="skeleton card"></div>
+    <div class="skeleton card"></div>
+  </div>
+</section>
+
+<section class="section tips">
+  <div class="card">
+    <div class="card__body">
+      <h3 class="h4">Cooking Buddy</h3>
+      <p class="muted">Your personalized recipe assistant.</p>
+      <ul class="tips-list">
+        <li>💡 Spices can boost your immunity!</li>
+        <li>🧂 Experiment with herbs to enhance flavors.</li>
+        <li>🍲 Cooking with fresh ingredients makes a difference.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+{% endblock %}

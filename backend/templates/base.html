@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Basic meta -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <meta name="theme-color" content="#0ea5e9" />
+    <meta name="color-scheme" content="light dark" />
+
+    <!-- SEO / Social (safe defaults; override via head_extra block if needed) -->
+    <title>{% block title %}Mauritian Recipe Finder{% endblock %}</title>
+    <meta name="description" content="Find Mauritian recipes based on the ingredients you have. Smart substitutions, allergen-aware." />
+    <meta property="og:title" content="Mauritian Recipe Finder" />
+    <meta property="og:description" content="Find Mauritian recipes based on the ingredients you have." />
+    <meta property="og:type" content="website" />
+
+    <!-- Icons -->
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}" />
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='img/touch-icon.png') }}" />
+    {# Optional manifest (add file if/when you want PWA) #}
+    {# <link rel="manifest" href="{{ url_for('static', filename='manifest.webmanifest') }}"> #}
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+    {% block page_css %}{% endblock %}
+
+    {% block head_extra %}{% endblock %}
+
+    <!-- Global JS (defer so it waits for parsing) -->
+    <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {# IMPORTANT: page-specific scripts are now loaded at the bottom of <body>.
+       Leaving them here can fire too early (before DOM exists). #}
+  </head>
+
+  <body class="app">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    {# ---------- Header ---------- #}
+    <header class="app-header" role="banner">
+      <div class="app-header__left">
+        <span class="logo" aria-label="Mauritius Flag">🇲🇺</span>
+        <a class="brand" href="/">Mauritian Recipe Finder</a>
+      </div>
+      <nav class="app-header__right" role="navigation" aria-label="Top navigation">
+        <a class="icon-btn" href="/search" aria-label="Search">🔍</a>
+        <a class="icon-btn" href="/about" aria-label="About">ℹ️</a>
+      </nav>
+    </header>
+
+    {# ---------- Main content ---------- #}
+    <main id="main" class="app-main" role="main" tabindex="-1">
+      {% block content %}{% endblock %}
+    </main>
+
+    {# ---------- Bottom Nav (mobile) ---------- #}
+    {% set path = request.path %}
+    <nav class="tabbar" role="navigation" aria-label="Primary tabs">
+      <a href="/" class="tab {{ 'active' if path == '/' else '' }}">
+        <div class="tab__icon" aria-hidden="true">🏠</div>
+        <div class="tab__label">Home</div>
+      </a>
+      <a href="/search" class="tab {{ 'active' if path.startswith('/search') else '' }}">
+        <div class="tab__icon" aria-hidden="true">🔍</div>
+        <div class="tab__label">Search</div>
+      </a>
+      <a href="/favorites" class="tab disabled" aria-disabled="true" title="Coming soon">
+        <div class="tab__icon" aria-hidden="true">📂</div>
+        <div class="tab__label">Favorites</div>
+      </a>
+      <a href="/about" class="tab {{ 'active' if path.startswith('/about') else '' }}">
+        <div class="tab__icon" aria-hidden="true">ℹ️</div>
+        <div class="tab__label">About</div>
+      </a>
+    </nav>
+
+    {# ---------- Footer (optional) ---------- #}
+    <footer class="app-footer" role="contentinfo">
+      <p>© {{  now().year if now is defined else '2025' }} Mauritian Recipe Finder</p>
+    </footer>
+
+    {# ---------- Toaster / messages ---------- #}
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+    {# Safety: if rendered outside Flask context, JS marks active tab #}
+    <script>
+      (function () {
+        try {
+          const here = location.pathname;
+          document.querySelectorAll(".tabbar .tab").forEach((a) => {
+            if (a.classList.contains("disabled")) return;
+            const href = a.getAttribute("href");
+            if (
+              href === here ||
+              (here.startsWith("/search") && href === "/search") ||
+              (here.startsWith("/about") && href === "/about")
+            ) {
+              a.classList.add("active");
+            }
+          });
+        } catch {}
+      })();
+    </script>
+
+    {# Page-specific scripts run AFTER DOM is parsed — fixes your submit binding #}
+    {% block page_js %}{% endblock %}
+
+    {% block body_end %}{% endblock %}
+  </body>
+</html>

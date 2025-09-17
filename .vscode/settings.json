@@ -1,0 +1,12 @@
+{
+  // Use the backend virtualenv for the whole workspace
+  "python.defaultInterpreterPath": "${workspaceFolder}/backend/venv/Scripts/python.exe",
+
+  // Help Pylance resolve imports like "from utils import ..."
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}/backend"
+  ],
+
+  // (Optional) New terminals open in /backend so "python app.py" just works
+  "terminal.integrated.cwd": "${workspaceFolder}/backend"
+}

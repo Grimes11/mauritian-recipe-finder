@@ -1,0 +1,365 @@
+{% extends "base.html" %}
+{% block title %}Recipe · Mauritian Recipe Finder{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="toolbar">
+    <a class="icon-btn" href="javascript:history.back()" aria-label="Back">🔙</a>
+    <h1 id="rd-title" class="h3">Loading…</h1>
+    <div class="toolbar__spacer"></div>
+    <button id="rd-fav" class="icon-btn" aria-label="Save to Favorites" title="Save to Favorites">❤️</button>
+  </div>
+
+  <!-- Quick facts -->
+  <article class="card">
+    <div class="card__body rd-facts">
+      <div class="facts__item">
+        <div class="facts__label">Cooking Time</div>
+        <div id="rd-time" class="facts__value">—</div>
+      </div>
+      <div class="facts__item">
+        <div class="facts__label">Servings</div>
+        <div id="rd-servings" class="facts__value">—</div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Ingredients -->
+  <article class="card">
+    <div class="card__body">
+      <h2 class="h4">Ingredients</h2>
+      <ul id="rd-ingredients" class="list">
+        <!-- filled by JS -->
+      </ul>
+      <p id="rd-ing-note" class="muted" style="display:none;">(Some ingredient names may display as FoodOn IDs if a friendly label isn’t available.)</p>
+    </div>
+  </article>
+
+  <!-- Unavailable & Substitutions (only shown if we have adaptation data) -->
+  <article id="rd-adapt-card" class="card" style="display:none;">
+    <div class="card__body">
+      <h2 class="h4">Unavailable Ingredients &amp; Substitutions</h2>
+
+      <div id="rd-adapt-metrics" class="grid grid-3">
+        <div class="metric">
+          <div class="metric__label">You Have</div>
+          <div id="rd-have-count" class="metric__value">0</div>
+        </div>
+        <div class="metric">
+          <div class="metric__label">Missing</div>
+          <div id="rd-missing-count" class="metric__value">0</div>
+        </div>
+        <div class="metric">
+          <div class="metric__label">Avoided</div>
+          <div id="rd-avoid-count" class="metric__value">0</div>
+        </div>
+      </div>
+
+      <h3 class="h5 mt">Adapted Ingredients</h3>
+      <ul id="rd-ingredients-adapted" class="list">
+        <!-- filled by JS -->
+      </ul>
+
+      <h3 class="h5 mt">Change Log</h3>
+      <ul id="rd-change-log" class="list">
+        <!-- filled by JS -->
+      </ul>
+    </div>
+  </article>
+
+  <!-- Instructions -->
+  <article class="card">
+    <div class="card__body">
+      <h2 class="h4">Instructions</h2>
+      <ol id="rd-steps" class="list--ol">
+        <!-- filled by JS -->
+      </ol>
+    </div>
+  </article>
+
+  <!-- Actions -->
+  <article class="card">
+    <div class="card__body">
+      <div class="actions">
+        <button id="rd-share" class="btn btn-secondary">Share</button>
+        <button id="rd-print" class="btn btn-secondary">Print</button>
+        <button id="rd-save" class="btn btn-primary">Save Recipe</button>
+      </div>
+    </div>
+  </article>
+</section>
+{% endblock %}
+
+{% block page_js %}
+<script>
+// -------------------------------
+// Utilities
+// -------------------------------
+function qs(selector, root) { return (root || document).querySelector(selector); }
+function qsa(selector, root) { return (root || document).querySelectorAll(selector); }
+function text(el, value) { if (el) el.textContent = value; }
+function create(tag, cls) { var el = document.createElement(tag); if (cls) el.className = cls; return el; }
+
+function getParamInt(name) {
+  var url = new URL(window.location.href);
+  var val = url.searchParams.get(name);
+  if (!val) return null;
+  var n = parseInt(val, 10);
+  return isNaN(n) ? null : n;
+}
+// NEW: also support /recipes/<id> path form
+function getIndexFromPath() {
+  var m = (location.pathname || "").match(/\/recipes\/(\d+)(?:\/|$)/);
+  return m ? parseInt(m[1], 10) : null;
+}
+function getIndex() {
+  var q = getParamInt('index');
+  if (q !== null) return q;
+  var p = getIndexFromPath();
+  return p !== null ? p : null;
+}
+
+// Build a simple id -> label map from /typeahead
+function buildLabelMap(typeaheadList) {
+  var map = {};
+  if (!typeaheadList || !typeaheadList.length) return map;
+  for (var i = 0; i < typeaheadList.length; i++) {
+    var row = typeaheadList[i];
+    if (!row || !row.id) continue;
+    if (!map[row.id]) {
+      map[row.id] = row.term || row.q || row.id;
+    }
+  }
+  return map;
+}
+
+function labelFor(id, labelMap) {
+  if (!id) return "";
+  if (labelMap && labelMap[id]) return labelMap[id];
+  return id;
+}
+
+// Find adapted data for this recipe from sessionStorage (if we came from results)
+function findAdaptedFor(index) {
+  try {
+    var raw = sessionStorage.getItem('searchResults');
+    if (!raw) return null;
+    var payload = JSON.parse(raw);
+    if (!payload || !payload.results || !payload.results.length) return null;
+    for (var i = 0; i < payload.results.length; i++) {
+      var r = payload.results[i];
+      if (typeof r.recipe_index === 'number' && r.recipe_index === index) {
+        return r;
+      }
+    }
+    return null;
+  } catch (e) {
+    return null;
+  }
+}
+
+// -------------------------------
+// Renderers
+// -------------------------------
+function renderIngredients(listEl, ings, labelMap) {
+  if (!listEl) return;
+  listEl.innerHTML = "";
+  if (!ings || !ings.length) {
+    var liEmpty = create('li', 'muted');
+    liEmpty.textContent = "No ingredients listed.";
+    listEl.appendChild(liEmpty);
+    return;
+  }
+  for (var i = 0; i < ings.length; i++) {
+    var ing = ings[i] || {};
+    var id = ing.id || "";
+    var qty = ing.qty || "";
+    var li = create('li');
+    var name = labelFor(id, labelMap);
+    li.textContent = (name ? name : id) + (qty ? (" — " + qty) : "");
+    listEl.appendChild(li);
+  }
+}
+
+function renderChangeLog(listEl, changes, labelMap) {
+  if (!listEl) return;
+  listEl.innerHTML = "";
+  if (!changes || !changes.length) {
+    var li = create('li', 'muted');
+    li.textContent = "No changes were required.";
+    listEl.appendChild(li);
+    return;
+  }
+  for (var i = 0; i < changes.length; i++) {
+    var c = changes[i] || {};
+    var typ = c.type || "change";
+    var fromId = c.from_id || "";
+    var toId = c.to_id || "";
+    var reason = c.reason || "";
+    var score = typeof c.score === 'number' ? c.score : null;
+
+    var fromLabel = labelFor(fromId, labelMap);
+    var toLabel = toId ? labelFor(toId, labelMap) : "";
+
+    var li = create('li');
+    var msg = "";
+    if (typ === "avoid_sub") {
+      msg = "Replaced avoided “" + fromLabel + "” with “" + toLabel + "”.";
+    } else if (typ === "missing_sub") {
+      msg = "Replaced missing “" + fromLabel + "” with “" + toLabel + "”.";
+    } else if (typ === "avoid_remove") {
+      msg = "Removed avoided “" + fromLabel + "”.";
+    } else {
+      msg = "Changed “" + fromLabel + "” to “" + toLabel + "”.";
+    }
+    if (reason) msg += " Reason: " + reason + ".";
+    if (score !== null) msg += " Score: " + score;
+
+    li.textContent = msg;
+    listEl.appendChild(li);
+  }
+}
+
+function renderSteps(listEl, steps) {
+  if (!listEl) return;
+  listEl.innerHTML = "";
+  if (!steps || !steps.length) {
+    var li = create('li', 'muted');
+    li.textContent = "No instructions provided.";
+    listEl.appendChild(li);
+    return;
+  }
+  for (var i = 0; i < steps.length; i++) {
+    var li = create('li');
+    li.textContent = steps[i];
+    listEl.appendChild(li);
+  }
+}
+
+// -------------------------------
+/* Main: fetch & paint */
+document.addEventListener('DOMContentLoaded', function () {
+  var idx = getIndex();
+  if (idx === null) {
+    text(qs('#rd-title'), 'Recipe');
+    alert('Missing recipe index in URL. Try opening this page from the results screen.');
+    return;
+  }
+
+  // Elements
+  var elTitle = qs('#rd-title');
+  var elTime = qs('#rd-time');
+  var elServ = qs('#rd-servings');
+  var elIng = qs('#rd-ingredients');
+  var elIngNote = qs('#rd-ing-note');
+  var elAdaptCard = qs('#rd-adapt-card');
+  var elHave = qs('#rd-have-count');
+  var elMiss = qs('#rd-missing-count');
+  var elAvoid = qs('#rd-avoid-count');
+  var elIngAdapt = qs('#rd-ingredients-adapted');
+  var elChange = qs('#rd-change-log');
+
+  // Fetch in parallel: recipe + typeahead for labels
+  var pRecipe = fetch('/recipe/' + idx).then(function (r) { return r.json(); });
+  var pTA = fetch('/typeahead').then(function (r) { return r.json(); });
+
+  Promise.all([pRecipe, pTA]).then(function (arr) {
+    var recipe = arr[0] || {};
+    var typeahead = arr[1] || [];
+    var labelMap = buildLabelMap(typeahead);
+
+    // Title
+    text(elTitle, recipe.title || 'Recipe');
+
+    // Facts (best effort; your JSON may not have these fields)
+    text(elTime, recipe.cook_time || (recipe.time || '—'));
+    text(elServ, recipe.servings || '—');
+
+    // Ingredients (original)
+    renderIngredients(elIng, recipe.ingredients || [], labelMap);
+    if (elIng && elIng.children && elIng.children.length && elIng.children[0].textContent.indexOf('FOODON:') !== -1) {
+      elIngNote.style.display = '';
+    }
+
+    // Steps
+    renderSteps(qs('#rd-steps'), recipe.steps || []);
+
+    // If we have adapted data (when arriving from results), show it
+    var adapted = findAdaptedFor(idx);
+    if (adapted) {
+      elAdaptCard.style.display = '';
+      text(elHave, String(adapted.have_count || 0));
+      text(elMiss, String(adapted.missing_count || 0));
+      text(elAvoid, String(adapted.avoid_count || 0));
+
+      // Adapted ingredients may already come with labels (attach_labels option).
+      // We’ll still fall back to our labelMap if a label is missing.
+      var adaptedList = [];
+      var src = adapted.ingredients_adapted || [];
+      for (var i = 0; i < src.length; i++) {
+        var item = src[i] || {};
+        adaptedList.push({
+          id: item.id,
+          qty: item.qty,
+          label: item.label || labelFor(item.id, labelMap)
+        });
+      }
+      // Render
+      elIngAdapt.innerHTML = '';
+      if (adaptedList.length === 0) {
+        var liA = create('li', 'muted');
+        liA.textContent = "No adapted ingredients.";
+        elIngAdapt.appendChild(liA);
+      } else {
+        for (var j = 0; j < adaptedList.length; j++) {
+          var a = adaptedList[j];
+          var li = create('li');
+          var nm = a.label || labelFor(a.id, labelMap);
+          li.textContent = (nm ? nm : a.id) + (a.qty ? (" — " + a.qty) : "");
+          elIngAdapt.appendChild(li);
+        }
+      }
+
+      renderChangeLog(elChange, adapted.change_log || [], labelMap);
+    }
+  }).catch(function () {
+    text(qs('#rd-title'), 'Recipe');
+    alert('Failed to load recipe. Please try again.');
+  });
+
+  // Simple actions
+  var btnShare = qs('#rd-share');
+  if (btnShare) {
+    btnShare.addEventListener('click', function () {
+      var shareText = document.title + ' — Mauritian Recipe Finder';
+      if (navigator && navigator.share) {
+        navigator.share({ title: document.title, text: shareText, url: window.location.href })
+          .catch(function(){ /* ignore */ });
+      } else {
+        navigator.clipboard && navigator.clipboard.writeText(window.location.href);
+        alert('Link copied to clipboard!');
+      }
+    });
+  }
+
+  var btnPrint = qs('#rd-print');
+  if (btnPrint) {
+    btnPrint.addEventListener('click', function () { window.print(); });
+  }
+
+  var btnSave = qs('#rd-save');
+  if (btnSave) {
+    btnSave.addEventListener('click', function () {
+      alert('Saved (demo). We will wire this to real persistence later.');
+    });
+  }
+
+  var btnFav = qs('#rd-fav');
+  if (btnFav) {
+    btnFav.addEventListener('click', function () {
+      alert('Added to favorites (demo).');
+    });
+  }
+});
+</script>
+{% endblock %}

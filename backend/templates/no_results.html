@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}No Results · Mauritian Recipe Finder{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="toolbar">
+    <a class="icon-btn" href="/search" aria-label="Back to Search">🔙</a>
+    <h1 class="h3">Recipe Search</h1>
+  </div>
+
+  <article class="card empty center">
+    <div class="card__body">
+      <div class="big-emoji" aria-hidden="true">😢</div>
+      <h2 class="h3">No Recipes Found</h2>
+      <p class="muted">We couldn’t find any recipes matching your ingredients.</p>
+
+      <h3 class="h5 mt-4">Suggestions</h3>
+      <div class="suggestions">
+        <div class="tip">
+          <div class="tip__icon">🔍</div>
+          <div>
+            <strong>Try removing one ingredient</strong>
+            <div class="muted">Simplify your search for better results.</div>
+          </div>
+        </div>
+        <div class="tip">
+          <div class="tip__icon">✨</div>
+          <div>
+            <strong>Broaden your search</strong>
+            <div class="muted">Use general terms or categories.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions mt-4">
+        <button class="btn btn-primary" onclick="retry()">Try Again</button>
+        <a class="btn btn-secondary" href="/search">Go Back to Search</a>
+      </div>
+    </div>
+  </article>
+</section>
+{% endblock %}
+
+{% block page_js %}
+<script>
+  // If we came here with the last query in the URL, the Try Again button
+  // just reloads results using the current querystring (if any).
+  function retry() {
+    const qs = location.search || "";
+    const target = "/results" + qs;
+    location.href = target;
+  }
+</script>
+{% endblock %}

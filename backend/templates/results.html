@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+{% block title %}Results · Mauritian Recipe Finder{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="toolbar">
+    <a class="icon-btn" href="/search" aria-label="Back to Search">🔙</a>
+    <h1 class="h3">Recipe Results</h1>
+    <div class="toolbar__right">
+      <a class="icon-btn" href="/search" aria-label="Search">🔍</a>
+    </div>
+  </div>
+
+  <div class="filters card">
+    <div class="filters__row">
+      <div>
+        <strong>Tags</strong>
+        <div id="selected-tags" class="chips"></div>
+      </div>
+      <div>
+        <button id="refine-btn" class="btn btn-secondary" onclick="location.href='/search'">Refine</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="adapting-note" class="note muted" hidden>
+    Adapting recipes… A quick win, and flavorful too.
+  </div>
+
+  <div id="results-list" class="cards-list">
+    <div class="skeleton card"></div>
+    <div class="skeleton card"></div>
+    <div class="skeleton card"></div>
+  </div>
+
+  <div id="no-results" class="card empty" hidden>
+    <div class="card__body center">
+      <div class="big-emoji" aria-hidden="true">😢</div>
+      <h3>No Recipes Found</h3>
+      <p class="muted">We couldn’t find any recipes matching your ingredients.</p>
+      <div class="suggestions">
+        <div class="tip">
+          <div class="tip__icon">🔍</div>
+          <div>
+            <strong>Try removing one ingredient</strong>
+            <div class="muted">Simplify your search for better results.</div>
+          </div>
+        </div>
+        <div class="tip">
+          <div class="tip__icon">✨</div>
+          <div>
+            <strong>Broaden your search</strong>
+            <div class="muted">Use general terms or categories.</div>
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" onclick="reloadResults()">Try Again</button>
+        <a class="btn btn-secondary" href="/search">Go Back to Search</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block page_js %}
+<script>
+  const qs = new URLSearchParams(location.search);
+  const have  = (qs.get("have")  || "").split(",").map(s => s.trim()).filter(Boolean);
+  const avoid = (qs.get("avoid") || "").split(",").map(s => s.trim()).filter(Boolean);
+  const diet  = (qs.get("diet")  || "").split(",").map(s => s.trim()).filter(Boolean);
+  const limit = parseInt(qs.get("limit") || "20", 10);
+
+  // NEW: detect whether query params exist; if not, use session fallback
+  const hasParams = [...qs.keys()].length > 0;
+  const lastQuery = !hasParams ? JSON.parse(sessionStorage.getItem("lastQuery") || "null") : null;
+
+  // Show chosen tags (have/avoid/diet) as read-only chips
+  (function showTags() {
+    const box = document.getElementById("selected-tags");
+    if (!box) return;
+    const add = (txt, cls="") => {
+      const b = document.createElement("span");
+      b.className = "chip chip--readonly " + cls;
+      b.textContent = txt;
+      box.appendChild(b);
+    };
+    const tagsHave  = hasParams ? have  : (lastQuery?.have  || []);
+    const tagsAvoid = hasParams ? avoid : (lastQuery?.avoid || []);
+    const tagsDiet  = hasParams ? diet  : (lastQuery?.diet  || []);
+    tagsHave.forEach(h => add(h));
+    tagsAvoid.forEach(a => add("no " + a, "chip--warn"));
+    tagsDiet.forEach(d => add(d, "chip--info"));
+  })();
+
+  async function fetchResults() {
+    document.getElementById("adapting-note").hidden = false;
+
+    // NEW: build POST body from either URL params or session fallback
+    const body = hasParams ? {
+      have,
+      avoid,
+      diet,
+      attach_labels: true,
+      limit: Number.isFinite(limit) ? limit : 20
+    } : (lastQuery || { have: [], avoid: [], diet: [], attach_labels: true, limit: 20 });
+
+    const res = await fetch("/search", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    });
+    if (!res.ok) throw new Error(`Search failed: ${res.status}`);
+    return res.json();
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  }
+
+  function renderResults(payload) {
+    document.getElementById("adapting-note").hidden = true;
+
+    const list = document.getElementById("results-list");
+    if (!list) return;
+    list.innerHTML = "";
+
+    const items = (payload && payload.results) || [];
+    if (!items.length) {
+      document.getElementById("no-results").hidden = false;
+      return;
+    }
+
+    document.getElementById("no-results").hidden = true;
+
+    items.forEach(item => {
+      const card = document.createElement("article");
+      card.className = "card recipe-card";
+      const title = escapeHtml(item.title || "Recipe");
+      const idx = item.recipe_index;
+
+      const quick = `
+        <div class="quick">
+          <span title="match score">⭐ ${item.score ?? 0}</span>
+          <span title="you have">${item.have_count ?? 0} have</span>
+          <span title="missing">${item.missing_count ?? 0} missing</span>
+          ${(item.avoid_count ?? 0) ? `<span class="warn" title="avoid">${item.avoid_count} avoided</span>` : ""}
+        </div>`;
+
+      const ingPreview = ((item.ingredients_adapted || []).slice(0,4)
+        .map(i => escapeHtml(i.label || i.id || "ingredient"))
+        .join(", "));
+
+      const changes = Array.isArray(item.change_log) ? item.change_log : [];
+
+      card.innerHTML = `
+        <div class="card__body">
+          <div class="card__row">
+            <h3 class="h4">${title}</h3>
+            <button class="icon-btn" title="Favorite (coming soon)" aria-label="Favorite" disabled>❤️</button>
+          </div>
+          ${quick}
+          <p class="muted">Ingredients: ${ingPreview}${(item.ingredients_adapted || []).length > 4 ? "…" : ""}</p>
+
+          ${changes.length ? `
+            <details class="changes">
+              <summary>Adapting Recipes</summary>
+              <ul class="change-list">
+                ${changes.map(c => {
+                  const t = c.type === "avoid_sub" ? "Replaced (avoid)" :
+                            c.type === "missing_sub" ? "Substituted (missing)" :
+                            c.type === "avoid_remove" ? "Removed (avoid)" : (c.type || "Change");
+                  const toId = escapeHtml(c.to_id || "");
+                  const reason = escapeHtml(c.reason || "");
+                  return `<li><span class="badge">${t}</span> ${toId ? `→ <code>${toId}</code>` : ""} <small class="muted">${reason}</small></li>`;
+                }).join("")}
+              </ul>
+            </details>
+          ` : ""}
+
+          <div class="actions">
+            <!-- go to HTML page -->
+            <a class="btn btn-secondary" href="/recipes/${idx}">View Details</a>
+            <button class="btn" disabled title="Coming soon">Save</button>
+          </div>
+        </div>
+      `;
+      list.appendChild(card);
+    });
+  }
+
+  async function reloadResults() {
+    const list = document.getElementById("results-list");
+    if (list) {
+      list.innerHTML = '<div class="skeleton card"></div><div class="skeleton card"></div><div class="skeleton card"></div>';
+    }
+    document.getElementById("no-results").hidden = true;
+    try {
+      const data = await fetchResults();
+
+      // keep for detail page to show adapted info if needed
+      sessionStorage.setItem("searchResults", JSON.stringify(data));
+
+      renderResults(data);
+    } catch (e) {
+      console.error(e);
+      document.getElementById("adapting-note").hidden = true;
+      document.getElementById("no-results").hidden = false;
+    }
+  }
+
+  // initial load
+  reloadResults();
+</script>
+{% endblock %}

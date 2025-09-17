@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block title %}How to Use · Mauritian Recipe Finder{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="toolbar">
+    <a class="icon-btn" href="javascript:history.back()" aria-label="Back">🔙</a>
+    <h1 class="h3">How to Use Mauritian Recipe Finder</h1>
+    <div class="toolbar__spacer"></div>
+  </div>
+
+  <article class="card">
+    <div class="card__body">
+      <p class="muted">Version 1.0 · Your AI Cooking Assistant</p>
+      <h2 class="h4 mt-sm">Welcome to Your Recipe Guide!</h2>
+      <p>
+        This app suggests <strong>Mauritian recipes</strong> using the ingredients you already have.  
+        Add items you want to <em>avoid</em> (e.g., allergens), then let the app adapt recipes for you.
+      </p>
+    </div>
+  </article>
+
+  <!-- Step 1 -->
+  <article class="card">
+    <div class="card__body">
+      <div class="media">
+        <div class="media__icon" aria-hidden="true">🥕</div>
+        <div class="media__content">
+          <h3 class="h5">Step 1: Add Ingredients</h3>
+          <p>Type ingredients you have and the ones to exclude (allergies or dislikes).</p>
+          <ul class="list">
+            <li>Use common names (e.g., <em>chicken</em>, <em>tomato</em>, <em>garlic</em>).</li>
+            <li>You can also paste Mauritian/French names (e.g., <em>poulet</em>), we’ll normalize them.</li>
+            <li>For exclusions, try tags like <em>contains-milk</em> or words like <em>butter</em>.</li>
+          </ul>
+          <a class="btn btn-primary mt" href="/search">Enter Ingredients</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Step 2 -->
+  <article class="card">
+    <div class="card__body">
+      <div class="media">
+        <div class="media__icon" aria-hidden="true">🔍</div>
+        <div class="media__content">
+          <h3 class="h5">Step 2: Click <em>Find Recipes</em></h3>
+          <p>We’ll score recipes by what you have, what’s missing, and what should be avoided.</p>
+          <ul class="list">
+            <li><strong>Have</strong> ingredients boost the score.</li>
+            <li><strong>Missing</strong> ingredients reduce the score (we may suggest substitutes).</li>
+            <li><strong>Avoided</strong> ingredients are removed or substituted when possible.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Step 3 -->
+  <article class="card">
+    <div class="card__body">
+      <div class="media">
+        <div class="media__icon" aria-hidden="true">📃</div>
+        <div class="media__content">
+          <h3 class="h5">Step 3: View Results</h3>
+          <p>
+            Browse recommended recipes. Tap a recipe to see ingredients, instructions, and an
+            <strong>“Unavailable &amp; Substitutions”</strong> section showing any swaps we made.
+          </p>
+          <ul class="list">
+            <li><strong>Change Log</strong> explains what was replaced and why.</li>
+            <li>Use <em>Share</em> or <em>Print</em> for quick access while cooking.</li>
+          </ul>
+          <a class="btn btn-secondary mt-sm" href="/search">Find Recipes</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Tips -->
+  <article class="card">
+    <div class="card__body">
+      <h3 class="h5">Cooking Tips</h3>
+      <div class="tips">
+        <div class="tip">💡 Spices can boost your immunity.</div>
+        <div class="tip">🧂 Experiment with herbs to enhance flavors.</div>
+        <div class="tip">🍲 Fresh ingredients make a big difference.</div>
+      </div>
+    </div>
+  </article>
+
+  <!-- FAQ + Support CTA -->
+  <article class="card">
+    <div class="card__body">
+      <h3 class="h5">Need Help?</h3>
+      <p>Check our quick answers or reach out to the team.</p>
+      <div class="actions">
+        <a class="btn btn-secondary" href="/about#faq">Visit FAQ</a>
+        <a class="btn btn-primary" href="/about#contact">Contact Support</a>
+      </div>
+    </div>
+  </article>
+</section>
+{% endblock %}
+
+{% block page_js %}
+<script>
+  // no heavy JS; keep page snappy and static-friendly
+</script>
+{% endblock %}

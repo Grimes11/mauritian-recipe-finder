@@ -1,7 +1,7 @@
 # backend/utils/units_service.py
 from __future__ import annotations
 
-from typing import Any, Dict, Optional, Tuple
+from typing import Any, Dict, Optional, Iterable
 import re
 
 from . import data_loader as dl
@@ -11,12 +11,20 @@ _UNICODE_FRACTIONS = {
     "½": 0.5,
     "¼": 0.25,
     "¾": 0.75,
-    "⅓": 1/3,
-    "⅔": 2/3,
+    "⅓": 1 / 3,
+    "⅔": 2 / 3,
     "⅛": 0.125,
     "⅜": 0.375,
     "⅝": 0.625,
     "⅞": 0.875,
+}
+
+# Treat these as symbolic, non-numeric quantities
+_SYMBOLIC_QTYS = {
+    "to taste",
+    "as needed",
+    "to-taste",
+    "as-needed",
 }
 
 
@@ -92,11 +100,20 @@ class UnitsService:
         Parse a free-text qty like "2 tbsp", "500 g", "1/2 cup", "½ tsp", "1-2 tsp".
         Returns { amount_min, amount_max, unit }.
         If cannot parse, returns all None.
+
+        For symbolic amounts like "to taste" / "as needed", returns:
+            { "amount_min": None, "amount_max": None, "unit": "<symbolic string>" }
         """
         if not qty:
             return {"amount_min": None, "amount_max": None, "unit": None}
 
         s = qty.strip().lower()
+
+        # Special-case symbolic amounts (no numeric parsing)
+        if s in _SYMBOLIC_QTYS:
+            # preserve the exact symbolic string as a "unit" so validators/UIs can display it
+            return {"amount_min": None, "amount_max": None, "unit": s}
+
         m = self._qty_re.match(s)
         if not m:
             return {"amount_min": None, "amount_max": None, "unit": None}
@@ -108,7 +125,7 @@ class UnitsService:
         # Resolve unit via alias map
         unit: Optional[str] = None
         if unit_raw:
-            unit = self.alias_to_unit.get(unit_raw)
+            unit = self.alias_to_unit.get(unit_raw, unit_raw)  # fall back to raw token if unknown
 
         # If only one amount, min==max
         if a1 is not None and a2 is None:
@@ -187,7 +204,7 @@ class UnitsService:
 
 if __name__ == "__main__":
     svc = UnitsService()
-    tests = [
+    tests: Iterable[Optional[str]] = [
         "2 tbsp",
         "500 g",
         "1/2 cup",
@@ -197,6 +214,8 @@ if __name__ == "__main__":
         "pinch",
         "2 cloves",
         "200ml",
+        "to taste",
+        "as needed",
         "  ",
         None,
     ]

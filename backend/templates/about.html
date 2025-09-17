@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% block title %}About · Mauritian Recipe Finder{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="toolbar">
+    <a class="icon-btn" href="javascript:history.back()" aria-label="Back">🔙</a>
+    <h1 class="h3">About the App</h1>
+    <div class="toolbar__spacer"></div>
+  </div>
+
+  <!-- About -->
+  <article class="card">
+    <div class="card__body">
+      <div class="media">
+        <div class="media__icon" aria-hidden="true">ℹ️</div>
+        <div class="media__content">
+          <h2 class="h4">Mauritian Recipe Finder</h2>
+          <p>
+            <strong>Case-Based Reasoning</strong> powers our recipe suggestions. We map your inputs to a food
+            ontology, score recipes by overlap with your pantry, and adapt them with smart substitutions when
+            something is missing or must be avoided.
+          </p>
+          <ul class="list">
+            <li>Ingredient normalization (supports local names &amp; synonyms)</li>
+            <li>Allergen &amp; diet filtering</li>
+            <li>Transparent change logs for substitutions</li>
+          </ul>
+        </div>
+      </div>
+      <p class="muted mt-sm">Smart recipe suggestions based on what you have.</p>
+    </div>
+  </article>
+
+  <!-- Team -->
+  <article class="card" id="team">
+    <div class="card__body">
+      <h3 class="h5">Meet the Developers</h3>
+
+      <div class="list--people">
+        <div class="person">
+          <div class="person__avatar" aria-hidden="true">👩‍💻</div>
+          <div class="person__meta">
+            <div class="person__name">Alice</div>
+            <div class="person__role">Lead Developer</div>
+            <p class="person__bio">Passionate about AI and cooking. Loves coding and trying new recipes.</p>
+          </div>
+        </div>
+
+        <div class="person">
+          <div class="person__avatar" aria-hidden="true">👨‍💻</div>
+          <div class="person__meta">
+            <div class="person__name">Bob</div>
+            <div class="person__role">Backend Developer</div>
+            <p class="person__bio">Building robust APIs and data pipelines for smooth cooking experiences.</p>
+          </div>
+        </div>
+
+        <div class="person">
+          <div class="person__avatar" aria-hidden="true">👩‍🔬</div>
+          <div class="person__meta">
+            <div class="person__name">Catherine</div>
+            <div class="person__role">UX/UI Designer</div>
+            <p class="person__bio">Designs clean, mobile-first interfaces that feel like a native app.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- FAQ -->
+  <article class="card" id="faq">
+    <div class="card__body">
+      <h3 class="h5">FAQ</h3>
+      <details class="faq">
+        <summary>How are substitutions chosen?</summary>
+        <div>
+          We combine explicit rules and same-parent fallbacks in the food ontology, then filter for diet and
+          allergens. Each change lists a reason and a score.
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>Why do some ingredient names look technical?</summary>
+        <div>
+          Ingredient IDs come from a food ontology. We attach friendly labels where possible; occasionally you may
+          see the ID if a label isn’t available yet.
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>Can I save or share recipes?</summary>
+        <div>
+          Yes — open a recipe and use <em>Share</em> or <em>Print</em>. Saving to favorites is included as a demo;
+          persistent accounts are planned.
+        </div>
+      </details>
+    </div>
+  </article>
+
+  <!-- Contact -->
+  <article class="card" id="contact">
+    <div class="card__body">
+      <h3 class="h5">Contact Us</h3>
+      <p>Need help or have feedback? We’d love to hear from you.</p>
+      <div class="actions">
+        <a class="btn btn-secondary" href="/how_to">Visit FAQ</a>
+        <a class="btn btn-primary" href="mailto:support@mauritian-recipes.example">Contact Support</a>
+      </div>
+      <p class="muted mt-sm">You can also reach us from the Search page footer.</p>
+    </div>
+  </article>
+</section>
+{% endblock %}
+
+{% block page_js %}
+<script>
+  // Lightweight page enhancements only
+  document.addEventListener('DOMContentLoaded', function () {
+    // Smooth-scroll if we arrived with a hash
+    if (window.location.hash) {
+      var el = document.getElementById(window.location.hash.substring(1));
+      if (el && el.scrollIntoView) { el.scrollIntoView({behavior:'smooth'}); }
+    }
+  });
+</script>
+{% endblock %}

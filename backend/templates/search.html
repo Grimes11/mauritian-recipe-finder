@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+{% block title %}Search · Mauritian Recipe Finder{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="toolbar">
+    <a class="icon-btn" href="/" aria-label="Back">🔙</a>
+    <h1 class="h3">Find Your Recipe</h1>
+  </div>
+
+  <form id="search-form" class="card form">
+    <!-- ensure the API returns ingredient labels for nicer chips -->
+    <input type="hidden" name="attach_labels" value="1" />
+
+    <div class="form-row">
+      <label for="have-input" class="label">Ingredients You Have</label>
+      <input
+        id="have-input"
+        type="text"
+        inputmode="text"
+        placeholder="Type or select ingredients… (comma to separate)"
+        class="input"
+        autocomplete="off"
+      />
+      <small class="muted">Tip: use commas — e.g., <em>chicken, tomato, onion</em></small>
+      <div id="have-tags" class="chips"></div>
+    </div>
+
+    <div class="form-row">
+      <label for="avoid-input" class="label">Ingredients to Avoid</label>
+      <input
+        id="avoid-input"
+        type="text"
+        inputmode="text"
+        placeholder="e.g., dairy, shellfish, butter…"
+        class="input"
+        autocomplete="off"
+      />
+      <div id="avoid-tags" class="chips"></div>
+      <small class="muted">Allergies work too: <em>contains-milk</em>, <em>peanut</em>, <em>gluten</em>.</small>
+    </div>
+
+    <div class="form-row">
+      <label class="label">Tags</label>
+      <div class="chip-select" role="group" aria-label="Diet / style">
+        <button type="button" class="chip" data-diet="vegetarian">🥦 Vegetarian</button>
+        <button type="button" class="chip" data-diet="vegan">🌱 Vegan</button>
+        <button type="button" class="chip" data-note="spicy">🌶️ Spicy</button>
+        <button type="button" class="chip" data-note="mauritian">🇲🇺 Mauritian</button>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" id="clear-btn" class="btn btn-secondary">Clear Inputs</button>
+      <button type="submit" id="find-btn" class="btn btn-primary">Find Recipes</button>
+      <span id="searching-spinner" class="spinner" hidden>Finding recipes…</span>
+    </div>
+  </form>
+</section>
+
+<section class="section">
+  <h2 class="h4">Common Ingredients</h2>
+  <div id="common-ingredients" class="pill-cloud">
+    <!-- Filled by JS from /typeahead -->
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="h4">Popular Recipes</h2>
+  <div id="popular-mini" class="cards-grid mini">
+    <div class="skeleton card"></div>
+    <div class="skeleton card"></div>
+    <div class="skeleton card"></div>
+  </div>
+</section>
+{% endblock %}
+
+{% block page_js %}
+<script>
+  // --- tiny “chips” input model --------------------------------------------
+  function makeTagger(inputEl, containerEl) {
+    const tags = new Set();
+    function render() {
+      containerEl.innerHTML = "";
+      for (const t of tags) {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "chip chip--selected";
+        b.textContent = t;
+        b.title = "Remove";
+        b.onclick = () => { tags.delete(t); render(); };
+        containerEl.appendChild(b);
+      }
+    }
+    function tryAddFromText(txt) {
+      (txt || "").split(",").map(s => s.trim()).filter(Boolean).forEach(v => tags.add(v));
+      render();
+    }
+    inputEl.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") { e.preventDefault(); tryAddFromText(inputEl.value); inputEl.value = ""; }
+    });
+    inputEl.addEventListener("blur", () => { if (inputEl.value.trim()) { tryAddFromText(inputEl.value); inputEl.value = ""; }});
+    inputEl.addEventListener("input", (e) => {
+      if (e.target.value.includes(",")) {
+        tryAddFromText(e.target.value);
+        inputEl.value = "";
+      }
+    });
+    return {
+      add: (v) => { tags.add(v); render(); },
+      values: () => Array.from(tags),
+      clear: () => { tags.clear(); render(); },
+    };
+  }
+
+  // -- init taggers
+  const have = makeTagger(document.getElementById("have-input"),  document.getElementById("have-tags"));
+  const avoid = makeTagger(document.getElementById("avoid-input"), document.getElementById("avoid-tags"));
+
+  // -- diet chips toggle
+  const dietChosen = new Set();
+  document.querySelectorAll(".chip-select .chip[data-diet]").forEach(ch => {
+    ch.addEventListener("click", () => {
+      const k = ch.dataset.diet;
+      if (dietChosen.has(k)) { dietChosen.delete(k); ch.classList.remove("chip--selected"); }
+      else { dietChosen.add(k); ch.classList.add("chip--selected"); }
+    });
+  });
+
+  // -- “note” chips (visual only)
+  document.querySelectorAll(".chip-select .chip[data-note]").forEach(ch => {
+    ch.addEventListener("click", () => ch.classList.toggle("chip--selected"));
+  });
+
+  // -- common ingredients from /typeahead
+  (async function loadCommon() {
+    try {
+      const res = await fetch("/typeahead");
+      const ta = await res.json();
+      const picks = ["chicken","tomato","onion","garlic","milk","egg","flour","sugar","butter","rice"];
+      const chosen = [];
+      for (const p of picks) {
+        const hit = ta.find(x => (x.term || "").toLowerCase() === p);
+        if (hit) chosen.push({ id: hit.id, term: p });
+      }
+      const cloud = document.getElementById("common-ingredients");
+      cloud.innerHTML = "";
+      chosen.forEach(item => {
+        const a = document.createElement("button");
+        a.type = "button";
+        a.className = "pill";
+        a.textContent = item.term;
+        a.onclick = () => have.add(item.term);
+        cloud.appendChild(a);
+      });
+    } catch {}
+  })();
+
+  // -- popular mini (first few recipes)
+  (async function loadPopular() {
+    try {
+      const res = await fetch("/recipes");
+      const recipes = await res.json();
+      const box = document.getElementById("popular-mini");
+      box.innerHTML = "";
+      recipes.slice(0,3).forEach((r, i) => {
+        const el = document.createElement("a");
+        // FIX: go to HTML page, not JSON API
+        el.href = `/recipes/${i}`;
+        el.className = "card link-card";
+        el.innerHTML = `<div class="card__body"><strong>${r.title || "Recipe"}</strong><div class="muted">View details</div></div>`;
+        box.appendChild(el);
+      });
+    } catch {}
+  })();
+
+  // -- clear inputs
+  document.getElementById("clear-btn").addEventListener("click", () => {
+    have.clear(); avoid.clear();
+    document.getElementById("have-input").value = "";
+    document.getElementById("avoid-input").value = "";
+    dietChosen.clear();
+    document.querySelectorAll(".chip-select .chip--selected").forEach(c => c.classList.remove("chip--selected"));
+    document.getElementById("have-input").focus();
+  });
+
+  function setSearching(isSearching) {
+    const btn = document.getElementById("find-btn");
+    const spinner = document.getElementById("searching-spinner");
+    if (btn) btn.disabled = !!isSearching;
+    if (spinner) spinner.hidden = !isSearching;
+  }
+
+  // -- submit -> navigate to /results with query params
+  document.getElementById("search-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    // flush pending text into chips
+    document.getElementById("have-input").dispatchEvent(new Event("blur"));
+    document.getElementById("avoid-input").dispatchEvent(new Event("blur"));
+
+    const params = new URLSearchParams();
+    const haveVals = have.values();
+    const avoidVals = avoid.values();
+
+    if (haveVals.length)  params.set("have", haveVals.join(","));
+    if (avoidVals.length) params.set("avoid", avoidVals.join(","));
+    if (dietChosen.size)  params.set("diet",  Array.from(dietChosen).join(","));
+    params.set("limit", "20");
+
+    // NEW: keep a copy of the body we intend to post (results page fallback)
+    sessionStorage.setItem("lastQuery", JSON.stringify({
+      have: haveVals,
+      avoid: avoidVals,
+      diet: Array.from(dietChosen),
+      limit: 20,
+      attach_labels: true
+    }));
+
+    setSearching(true);
+    // Navigate (results page will call the API)
+    window.location.assign(`/results?${params.toString()}`);
+  });
+</script>
+{% endblock %}
