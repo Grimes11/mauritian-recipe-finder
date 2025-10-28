@@ -60,13 +60,14 @@ def _to_label_if_obj(x: Any) -> str | None:
 def _resolve_to_id(term: str) -> str | None:
     """
     Resolve a free-text term via Normalizer, coercing result to a string id.
-    Normalizer may return a string id or a dict; handle both.
+    Normalizer returns a dict {foodon_id, label, ...} for matches.
     """
     rid = normalizer.resolve(term)
     if isinstance(rid, str):
         return rid
     if isinstance(rid, dict):
-        return rid.get("id")
+        # 🔧 FIX: read the right key (with backwards-compat fallback)
+        return rid.get("foodon_id") or rid.get("id")
     return None
 
 def _parse_search_payload(data: Dict[str, Any]) -> Dict[str, Any]:
@@ -138,7 +139,7 @@ def _parse_search_payload(data: Dict[str, Any]) -> Dict[str, Any]:
     diet = {str(x).strip().lower() for x in (data.get("diet") or [])}
     limit = int(data.get("limit") or 10)
     hard_exclude_unavoidable = bool(data.get("hard_exclude_unavoidable", False))
-    attach_labels = bool(data.get("attach_labels", False))
+    attach_labels = bool(data.get("attach_labels", True))
 
     return {
         "have_terms_or_objs": have_terms_or_objs,
@@ -212,19 +213,37 @@ def _normalize_have_for_service(have_terms_or_objs: List[Any]) -> List[Dict[str,
 # --- utilities used by the enhanced fallback ---------------------------------
 def _build_label_map() -> Dict[str, str]:
     """
-    Build a lowercase id -> friendly label map from /typeahead.
-    Falls back to using id as label if none available.
+    Build a lowercase id -> friendly label map.
+    Priority:
+      1) typeahead_full.json "term"/"q"/"name"
+      2) FoodOn cache label (dl.get_label)
+      3) fall back to the id itself
     """
     label_map: Dict[str, str] = {}
+
+    # 1) seed from typeahead
     try:
         for row in dl.get_typeahead() or []:
-            rid = (row.get("id") or "").lower()
-            term = (row.get("term") or row.get("q") or rid or "").strip()
-            if rid:
+            rid = (row.get("id") or "").strip().lower()
+            term = (row.get("term") or row.get("q") or row.get("name") or "").strip()
+            if rid and term:
                 label_map.setdefault(rid, term)
     except Exception:
         pass
+
+    # 2) fill gaps from FoodOn cache labels
+    try:
+        for fid, node in dl.get_foodon_index().items():
+            key = fid.lower()
+            if key not in label_map:
+                pretty = (node.get("label") or "").strip()
+                label_map[key] = pretty or fid
+    except Exception:
+        pass
+
+    # 3) last resort is id itself (already covered)
     return label_map
+
 
 def _extract_ing_id_and_label(ing: Any, label_map: Dict[str, str]) -> Tuple[str, str]:
     """
@@ -310,8 +329,7 @@ def _fallback_basic_search(
 
     # also keep avoid labels for substring checks if user typed any as labels
     avoid_labels: Set[str] = set()
-    # (We don’t have original avoid labels here; they were normalized upstream.
-    # If you want, you can push raw avoid labels into the params and include them.)
+    # (We don’t have original avoid labels here; they were normalized upstream.)
 
     recipes = dl.get_recipes() or []
     results: List[Dict[str, Any]] = []
@@ -483,7 +501,7 @@ def _call_retrieval_with_clean_kwargs(**candidate_kwargs):
     return result
 
 # -----------------------------------------------------------------------------
-# JSON API Routes (unchanged outwardly)
+# JSON API Routes
 # -----------------------------------------------------------------------------
 @app.get("/health")
 def health():

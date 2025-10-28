@@ -278,32 +278,15 @@ function initSearchForm() {
   const form = document.querySelector("[data-search-form]") || document.getElementById("search-form");
   if (!form) return;
 
-  // If we are on /search, submit should redirect to /results with query params
+  // IMPORTANT:
+  // The /search page has its own chip-based handler defined inline in search.html.
+  // Do NOT bind another submit handler here, or it will override that logic
+  // and send empty values. Just return and let the page script handle it.
   if (location.pathname.startsWith("/search")) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      const payload = collectSearchPayload(form);
-      saveLastSearch(payload);
-
-      const qs = new URLSearchParams();
-      if (payload.have.length)  qs.set("have",  payload.have.join(","));
-      if (payload.avoid.length) qs.set("avoid", payload.avoid.join(","));
-      if (payload.diet.length)  qs.set("diet",  payload.diet.join(","));
-      if (payload.avoid_allergens.length) qs.set("avoid_allergens", payload.avoid_allergens.join(","));
-      if (payload.limit && payload.limit !== 20) qs.set("limit", String(payload.limit));
-      if (payload.attach_labels) qs.set("attach_labels", "1");
-
-      // Also keep a session copy of the exact query body for results.html fallback
-      sessionStorage.setItem("lastQuery", JSON.stringify(payload));
-
-      const url = `/results${qs.toString() ? "?" + qs.toString() : "?limit=20"}`;
-      window.location.assign(url);
-    });
-    return; // do not attach AJAX path on /search
+    return;
   }
 
-  // (For any other page embedding a search form, keep AJAX)
+  // For forms embedded on other pages, keep the AJAX flow below.
   const last = loadLastSearch();
   if (last) {
     const haveInput = $("#have-input", form) || $("[name='have']", form);
@@ -355,6 +338,8 @@ function initSearchForm() {
         injectResults(data);
       } else {
         sessionStorage.setItem("mrf:last-results", JSON.stringify(data));
+        sessionStorage.setItem("searchResults", JSON.stringify(data));
+
         window.location.assign("/results");
       }
     } catch (err) {
@@ -486,7 +471,7 @@ function escapeHtml(str) {
 
 document.addEventListener("DOMContentLoaded", async () => {
   await initTypeahead();     // harmless if /typeahead missing
-  initSearchForm();          // now handles /search submit -> /results?...
+  initSearchForm();          // now skips binding on /search (page owns submit)
   initResultsPage();         // adds sessionStorage-based fallback
   initRecipeDetailPage();    // enhances /recipe(s)/<id> page
   initInputChips();          // small input cleanups

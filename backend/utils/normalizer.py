@@ -22,13 +22,14 @@ class Normalizer:
     def resolve(self, raw: str) -> Dict[str, Any]:
         term = (raw or "").strip().lower()
         if not term:
-            return {"foodon_id": None, "label": None, "confidence": 0.0, "source": "empty"}
+            return {"id": None, "foodon_id": None, "label": None, "confidence": 0.0, "source": "empty"}
 
         # 1. Mauritian aliases
         if term in self.mx:
             fid = self.mx[term]
             return {
-                "foodon_id": fid,
+                "id": fid,                    # <-- add alias
+                "foodon_id": fid,             # keep existing key
                 "label": dl.get_label(fid),
                 "confidence": 1.0,
                 "source": "mx"
@@ -38,6 +39,7 @@ class Normalizer:
         if term in self.label_idx:
             fid = self.label_idx[term]
             return {
+                "id": fid,
                 "foodon_id": fid,
                 "label": dl.get_label(fid),
                 "confidence": 1.0,
@@ -48,6 +50,7 @@ class Normalizer:
         if term in self.syn_idx:
             fid = self.syn_idx[term]
             return {
+                "id": fid,
                 "foodon_id": fid,
                 "label": dl.get_label(fid),
                 "confidence": 0.9,
@@ -58,10 +61,11 @@ class Normalizer:
         for key, fid in self.all_idx.items():
             if key.startswith(term[:3]):
                 return {
+                    "id": fid,
                     "foodon_id": fid,
                     "label": dl.get_label(fid),
                     "confidence": 0.5,
                     "source": "fuzzy"
                 }
 
-        return {"foodon_id": None, "label": None, "confidence": 0.0, "source": "not_found"}
+        return {"id": None, "foodon_id": None, "label": None, "confidence": 0.0, "source": "not_found"}

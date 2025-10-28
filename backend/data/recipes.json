@@ -1,12 +1,12 @@
 [
- {
+  {
     "title": "Mauritian Chicken Biryani",
     "ingredients": [
       { "id": "FOODON:00004320", "qty": "500 g" },
       { "id": "FOODON:02020149", "qty": "1 kg" },
       { "id": "FOODON:03301704", "qty": "3" },
       { "id": "FOODON:03301453", "qty": "3" },
-      { "id": "FOODON:03303396", "qty": "2 tsp" },
+      { "id": "FOODON:00003396", "qty": "2 tsp" },
       { "id": "FOODON:00003502", "qty": "2 whole" },
       { "id": "FOODON:03301175", "qty": "2 sticks" },
       { "id": "FOODON:03301176", "qty": "4" },
@@ -27,16 +27,17 @@
       { "id": "FOODON:00003661", "qty": "2" }
     ],
     "steps": [
-      "Wash rice (FOODON:00004320), soak, and parboil with star anise, cinnamon, and cloves.",
-      "Marinate chicken (FOODON:02020149) with garlic, ginger, yogurt or vinegar, cumin, turmeric, curry powder, and salt. Let it rest 1 hour.",
-      "Fry onions (FOODON:03301704) until golden. Reserve half for garnishing.",
-      "Cook marinated chicken with tomatoes, tomato paste, parsley, and mint leaves until fragrant and slightly reduced.",
-      "Layer half the rice at the bottom of a large pot, add chicken mixture, potatoes, then top with remaining rice.",
-      "Sprinkle fried onions, mint, parsley, lime juice, and optional saffron essence (can map later if added to FoodOn).",
-      "Seal pot and cook on low heat (dum) until rice is fluffy and flavors are infused.",
-      "Serve hot with cucumber raita or tomato chutney."
+      "Wash rice (FOODON:00004320), soak 20 min, and parboil with star anise, cinnamon, and cloves until 70% cooked; drain.",
+      "Marinate chicken (FOODON:02020149) with garlic, ginger, yogurt or vinegar, cumin, turmeric, curry powder, and salt. Rest 1 hour.",
+      "Fry sliced onions (FOODON:03301704) in oil (FOODON:03305263) until deep golden; reserve half.",
+      "Sauté tomatoes (FOODON:03301453) and tomato paste (FOODON:03301455) with the aromatics; add chicken and cook until sealed and lightly saucy.",
+      "Layer half the rice in a heavy pot, spoon chicken masala, scatter potatoes if using, then top with remaining rice.",
+      "Dot with fried onions, herbs (mint/parsley), a squeeze of lime, and saffron essence if using.",
+      "Seal the pot (dum) and steam on low until rice is fluffy and chicken is tender.",
+      "Fluff gently and serve hot."
     ]
   },
+
   {
     "title": "Rougaille Saucisse",
     "ingredients": [
@@ -44,8 +45,16 @@
       { "id": "FOODON:03301453", "qty": "3" },
       { "id": "FOODON:03301704", "qty": "2" },
       { "id": "FOODON:03305217", "qty": "1 tbsp" }
+    ],
+    "steps": [
+      "Prick and simmer sausages (FOODON:00002958) 5–10 min to remove excess salt; drain and slice.",
+      "Sauté sliced onion (FOODON:03301704) in a little oil until soft; add garlic paste (FOODON:03305217) and cook 30 sec.",
+      "Add chopped tomatoes (FOODON:03301453); cook down to a chunky sauce.",
+      "Stir in sausage slices and simmer 5–8 min so the sauce coats and reduces.",
+      "Adjust seasoning and serve with rice or farata."
     ]
   },
+
   {
     "title": "Fish Vindaye",
     "ingredients": [
@@ -53,8 +62,16 @@
       { "id": "FOODON:03301705", "qty": "2 tbsp" },
       { "id": "FOODON:00003396", "qty": "1 tbsp" },
       { "id": "FOODON:03301453", "qty": "2" }
+    ],
+    "steps": [
+      "Cut fish fillet (FOODON:00002742) into pieces, season lightly and shallow-fry until just golden; set aside.",
+      "In the same pan, add a little oil; bloom cumin (FOODON:00003396) briefly.",
+      "Add sliced tomatoes (FOODON:03301453) and cook to a soft base.",
+      "Pour in vinegar (FOODON:03301705) with a splash of water to make a bright, pickly sauce.",
+      "Return fish to the pan, coat gently and simmer 2–3 min. Cool—vindaye tastes better after it rests."
     ]
   },
+
   {
     "title": "Octopus Vindaye",
     "ingredients": [
@@ -62,6 +79,760 @@
       { "id": "FOODON:03301705", "qty": "3 tbsp" },
       { "id": "FOODON:03301842", "qty": "1 tbsp" },
       { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Simmer octopus (FOODON:03310498) in lightly salted water until tender; slice.",
+      "Sauté onion (FOODON:03301704) in a little oil, then stir in curry powder (FOODON:03301842) to bloom.",
+      "Add vinegar (FOODON:03301705) and a little cooking liquor to form a punchy sauce.",
+      "Fold in octopus slices and coat. Simmer 2–3 min; rest before serving so flavors develop."
+    ]
+  },
+
+  {
+    "title": "Chicken Curry",
+    "ingredients": [
+      { "id": "FOODON:02020149", "qty": "500 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301453", "qty": "2" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Brown sliced onion (FOODON:03301704) in oil until translucent.",
+      "Add curry powder (FOODON:03301842) and cook 30–45 sec to release aroma.",
+      "Stir in chopped tomatoes (FOODON:03301453) and cook to a thick base.",
+      "Add chicken pieces (FOODON:02020149); seal well, then add water to make a loose gravy.",
+      "Simmer until chicken is tender and sauce clings. Adjust seasoning and serve."
+    ]
+  },
+
+  {
+    "title": "Beef Curry",
+    "ingredients": [
+      { "id": "FOODON:00001282", "qty": "500 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301453", "qty": "2" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Sear beef cubes (FOODON:00001282) over medium-high heat; set aside.",
+      "In the same pot, soften onion (FOODON:03301704). Bloom curry powder (FOODON:03301842).",
+      "Add tomatoes (FOODON:03301453), then return beef and cover with water.",
+      "Simmer gently until beef is tender and gravy thickens (45–60 min)."
+    ]
+  },
+
+  {
+    "title": "Pork Curry",
+    "ingredients": [
+      { "id": "FOODON:00002570", "qty": "500 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301453", "qty": "2" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Sear pork pieces (FOODON:00002570) to light gold; set aside.",
+      "Soften onion; bloom curry powder; add tomatoes to make a base.",
+      "Return pork, add water, and simmer until tender and saucy (35–45 min)."
+    ]
+  },
+
+  {
+    "title": "Fish Curry",
+    "ingredients": [
+      { "id": "FOODON:00002742", "qty": "500 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301453", "qty": "2" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Sweat onion, then bloom curry powder briefly.",
+      "Add tomatoes and cook to a bright, thick sauce.",
+      "Lay fish pieces (FOODON:00002742) into the sauce; simmer gently 5–7 min until just cooked."
+    ]
+  },
+
+  {
+    "title": "Shrimp Rougaille",
+    "ingredients": [
+      { "id": "FOODON:03307015", "qty": "300 g" },
+      { "id": "FOODON:03301453", "qty": "3" },
+      { "id": "FOODON:03301704", "qty": "1" },
+      { "id": "FOODON:03305217", "qty": "1 tbsp" }
+    ],
+    "steps": [
+      "Sauté onion in a little oil; add garlic paste (FOODON:03305217).",
+      "Add chopped tomatoes and cook to a quick rougaille sauce.",
+      "Toss in cleaned prawns (FOODON:03307015) and cook 2–3 min until pink and just done."
+    ]
+  },
+
+  {
+    "title": "Smoked Marlin Salad",
+    "ingredients": [
+      { "id": "FOODON:03304348", "qty": "200 g" },
+      { "id": "FOODON:00003423", "qty": "5 leaves" },
+      { "id": "FOODON:00003320", "qty": "1" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Flake smoked marlin (FOODON:03304348).",
+      "Combine with torn lettuce (FOODON:00003423) and thinly sliced onion.",
+      "Dress with lemon juice (FOODON:00003320) and a drizzle of oil; toss lightly and serve."
+    ]
+  },
+
+  {
+    "title": "Sautéed Brèdes Mouroum",
+    "ingredients": [
+      { "id": "FOODON:00005327", "qty": "1 bunch" },
+      { "id": "FOODON:03301704", "qty": "1" },
+      { "id": "FOODON:03305263", "qty": "2 tbsp" }
+    ],
+    "steps": [
+      "Wash and roughly chop brèdes mouroum (FOODON:00005327).",
+      "Sauté sliced onion in oil (FOODON:03305263).",
+      "Add leaves, toss until just wilted and tender; season to taste."
+    ]
+  },
+
+  {
+    "title": "Mine Frite (Mauritian Fried Noodles)",
+    "ingredients": [
+      { "id": "FOODON:03401095", "qty": "300 g" },
+      { "id": "FOODON:03301704", "qty": "1" },
+      { "id": "FOODON:03301115", "qty": "2 tbsp" },
+      { "id": "FOODON:03307015", "qty": "150 g" }
+    ],
+    "steps": [
+      "Boil noodles (FOODON:03401095) until just tender; drain and oil lightly.",
+      "Stir-fry onion, then add prawns (FOODON:03307015) and cook until pink.",
+      "Toss in noodles; season with soy sauce (FOODON:03301115). Stir-fry until glossy and hot."
+    ]
+  },
+
+  {
+    "title": "Bol Renversé",
+    "ingredients": [
+      { "id": "FOODON:03401095", "qty": "200 g" },
+      { "id": "FOODON:02020149", "qty": "200 g" },
+      { "id": "FOODON:03301704", "qty": "1" },
+      { "id": "FOODON:03301453", "qty": "1" }
+    ],
+    "steps": [
+      "Boil noodles (FOODON:03401095) until al dente; drain.",
+      "Stir-fry onion and chicken strips (FOODON:02020149) until almost cooked.",
+      "Add chopped tomato and a splash of water to make a light gravy.",
+      "Pack a serving bowl with the saucy chicken, then noodles on top; invert onto a plate to unmold (‘renversé’)."
+    ]
+  },
+
+  {
+    "title": "Bouillon Brèdes",
+    "ingredients": [
+      { "id": "FOODON:00003495", "qty": "1 bunch" },
+      { "id": "FOODON:03301704", "qty": "1" },
+      { "id": "FOODON:03544059", "qty": "1 tsp" }
+    ],
+    "steps": [
+      "Bring water to a simmer; add sliced onion and spinach/brèdes (FOODON:00003495).",
+      "Season with salt (FOODON:03544059) and simmer just until leaves are tender and the broth tastes green and clean."
+    ]
+  },
+
+  {
+    "title": "Farata (Mauritian Paratha)",
+    "ingredients": [
+      { "id": "FOODON:03302798", "qty": "400 g" },
+      { "id": "FOODON:03544059", "qty": "1 tsp" },
+      { "id": "FOODON:03305263", "qty": "2 tbsp" },
+      { "id": "FOODON:00004429", "qty": "150 ml" }
+    ],
+    "steps": [
+      "Mix flour (FOODON:03302798), salt (FOODON:03544059), oil (FOODON:03305263) and water (FOODON:00004429) to a soft dough; rest 20–30 min.",
+      "Divide, roll, oil-laminate (optional), then roll out again.",
+      "Cook on a hot tawa with a brush of oil until brown blisters form."
+    ]
+  },
+
+  {
+    "title": "Dal Puri (Yellow Split Pea Flatbread)",
+    "ingredients": [
+      { "id": "FOODON:03302798", "qty": "400 g" },
+      { "id": "FOODON:00005336", "qty": "200 g" },
+      { "id": "FOODON:03306739", "qty": "1 tsp" },
+      { "id": "FOODON:03544059", "qty": "1 tsp" }
+    ],
+    "steps": [
+      "Boil and drain yellow split peas (FOODON:00005336); season with salt and ground black pepper. Dry out slightly and mash.",
+      "Make a soft dough with flour and water; rest.",
+      "Stuff dough balls with the pea filling, roll gently, and cook on a hot tawa until puffed and golden."
+    ]
+  },
+
+  {
+    "title": "Dholl Curry",
+    "ingredients": [
+      { "id": "FOODON:00005336", "qty": "250 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" },
+      { "id": "FOODON:03305217", "qty": "1 tbsp" }
+    ],
+    "steps": [
+      "Simmer split peas (FOODON:00005336) until tender; lightly mash.",
+      "In a pan, sauté onion and garlic paste; bloom curry powder.",
+      "Add the cooked peas and enough water for a ladleable curry; simmer 10 min and adjust seasoning."
+    ]
+  },
+
+  {
+    "title": "Cari Banane (Green Banana Curry)",
+    "ingredients": [
+      { "id": "FOODON:00003784", "qty": "6" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301453", "qty": "2" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Peel green bananas and cut into chunks; keep in salted water.",
+      "Sauté onion; bloom curry powder; add tomatoes and cook to a sauce.",
+      "Add bananas with a splash of water; simmer until just tender and the gravy clings."
+    ]
+  },
+
+  {
+    "title": "Cari Bringelle (Eggplant Curry)",
+    "ingredients": [
+      { "id": "FOODON:00003618", "qty": "2" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301453", "qty": "3" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Cube eggplant (FOODON:00003618) and salt briefly; pat dry.",
+      "Sauté onion, then bloom curry powder.",
+      "Add tomatoes; when saucy, add eggplant and simmer until soft and flavorful."
+    ]
+  },
+
+  {
+    "title": "Cari Chouchou (Chayote Curry)",
+    "ingredients": [
+      { "id": "FOODON:00003408", "qty": "2" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Peel and dice chayote (FOODON:00003408).",
+      "Sauté onion; bloom curry powder; add chayote and a little water.",
+      "Simmer until tender-crisp and coated in gravy."
+    ]
+  },
+
+  {
+    "title": "Cari Lalo (Taro Leaves Curry)",
+    "ingredients": [
+      { "id": "FOODON:00003495", "qty": "1 bunch" },
+      { "id": "FOODON:03301842", "qty": "1 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Shred taro/spinach leaves (FOODON:00003495).",
+      "Sauté onion; bloom curry powder; add leaves and a little water.",
+      "Simmer until tender and lightly creamy from the leaves."
+    ]
+  },
+
+  {
+    "title": "Cari Pomme de Terre (Potato Curry)",
+    "ingredients": [
+      { "id": "FOODON:00002796", "qty": "4" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Peel and chunk potatoes (FOODON:00002796).",
+      "Sauté onion; bloom curry powder; add potatoes and water to cover by one finger.",
+      "Simmer until tender; reduce to a thick gravy."
+    ]
+  },
+
+  {
+    "title": "Cari Pois (Green Pea Curry)",
+    "ingredients": [
+      { "id": "FOODON:00005336", "qty": "200 g" },
+      { "id": "FOODON:03301842", "qty": "1 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Sauté onion, bloom curry powder, add peas (pre-soaked/cooked if dried).",
+      "Add water and simmer briefly until peas are tender and saucy."
+    ]
+  },
+
+  {
+    "title": "Cari Ti Pois Carri (Pigeon Pea Curry)",
+    "ingredients": [
+      { "id": "FOODON:03301300", "qty": "200 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Cook pigeon peas (FOODON:03301300) until tender.",
+      "Sauté onion; bloom curry powder; fold in peas with a little cooking liquid.",
+      "Simmer 8–10 min to thicken."
+    ]
+  },
+
+  {
+    "title": "Cari Ourite (Octopus Curry)",
+    "ingredients": [
+      { "id": "FOODON:03310498", "qty": "400 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301705", "qty": "2 tbsp" }
+    ],
+    "steps": [
+      "Simmer octopus until tender; slice.",
+      "Bloom curry powder; deglaze with a splash of vinegar and water.",
+      "Fold in octopus and simmer a few minutes until coated."
+    ]
+  },
+
+  {
+    "title": "Cari Crabe (Crab Curry)",
+    "ingredients": [
+      { "id": "FOODON:03411498", "qty": "3 crabs" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301705", "qty": "2 tbsp" }
+    ],
+    "steps": [
+      "Clean and crack crabs.",
+      "Bloom curry powder; add vinegar and water to make gravy.",
+      "Add crab pieces; cover and simmer until shells go bright and flesh cooks through."
+    ]
+  },
+
+  {
+    "title": "Cari Camaron (Freshwater Prawn Curry)",
+    "ingredients": [
+      { "id": "FOODON:03307015", "qty": "300 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Sauté onion; bloom curry powder; add a little water for sauce.",
+      "Add prawns (FOODON:03307015) and simmer briefly until just cooked."
+    ]
+  },
+
+  {
+    "title": "Cari Cabri (Goat Curry)",
+    "ingredients": [
+      { "id": "FOODON:00001282", "qty": "500 g" },
+      { "id": "FOODON:03301842", "qty": "3 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Sear goat pieces; remove.",
+      "Sauté onion; bloom curry powder.",
+      "Return meat, add water, and simmer gently until tender (60–90 min), reducing to a rich gravy."
+    ]
+  },
+
+  {
+    "title": "Cari Lapin (Rabbit Curry)",
+    "ingredients": [
+      { "id": "FOODON:02022098", "qty": "500 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Brown rabbit pieces; set aside.",
+      "Bloom curry powder with onion; return meat, add water, and simmer gently until tender (40–50 min)."
+    ]
+  },
+
+  {
+    "title": "Cari Canard (Duck Curry)",
+    "ingredients": [
+      { "id": "FOODON:02020142", "qty": "500 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Render duck pieces to release some fat; set aside.",
+      "Use the fat to sauté onion; bloom curry powder.",
+      "Return duck, add water, and braise until tender and glossy."
+    ]
+  },
+
+  {
+    "title": "Cari Dinde (Turkey Curry)",
+    "ingredients": [
+      { "id": "FOODON:02022098", "qty": "500 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Brown turkey pieces; build a curry base with onion and curry powder.",
+      "Add water and simmer until the meat is tender and the gravy thick."
+    ]
+  },
+
+  {
+    "title": "Boulettes Soup (Mauritian Dim Sum Soup)",
+    "ingredients": [
+      { "id": "FOODON:03307015", "qty": "200 g" },
+      { "id": "FOODON:03301704", "qty": "1" },
+      { "id": "FOODON:03301115", "qty": "1 tbsp" }
+    ],
+    "steps": [
+      "Make a light broth with water, sliced onion, and soy sauce (FOODON:03301115).",
+      "Form prawn balls or drop cleaned prawns (FOODON:03307015) into the simmering broth and cook just until done.",
+      "Serve hot."
+    ]
+  },
+
+  {
+    "title": "Haleem (Mauritian Lentil Stew)",
+    "ingredients": [
+      { "id": "FOODON:00005336", "qty": "150 g" },
+      { "id": "FOODON:03301300", "qty": "100 g" },
+      { "id": "FOODON:00004320", "qty": "50 g" }
+    ],
+    "steps": [
+      "Combine split peas, pigeon peas, and rice; rinse well.",
+      "Simmer with plenty of water, stirring occasionally, until grains break down.",
+      "Season and mash to a comforting, porridge-like consistency."
+    ]
+  },
+
+  {
+    "title": "Kalia (Mauritian Beef Curry)",
+    "ingredients": [
+      { "id": "FOODON:00001282", "qty": "400 g" },
+      { "id": "FOODON:03301842", "qty": "3 tbsp" },
+      { "id": "FOODON:03301704", "qty": "2" },
+      { "id": "FOODON:03301844", "qty": "1 tsp" }
+    ],
+    "steps": [
+      "Sear beef; set aside.",
+      "Sauté onions, bloom curry powder, then add a pinch of ginger powder (FOODON:03301844).",
+      "Return beef with water; simmer until tender with a medium-thick gravy."
+    ]
+  },
+
+  {
+    "title": "Cari Masala Poisson (Fish Masala Curry)",
+    "ingredients": [
+      { "id": "FOODON:00002742", "qty": "500 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301453", "qty": "2" }
+    ],
+    "steps": [
+      "Make a masala base with curry powder and tomatoes.",
+      "Slide in fish pieces; spoon sauce over and simmer gently until flaky."
+    ]
+  },
+
+  {
+    "title": "Cari Kalia Poulet (Chicken Kalia)",
+    "ingredients": [
+      { "id": "FOODON:02020149", "qty": "500 g" },
+      { "id": "FOODON:03301842", "qty": "3 tbsp" },
+      { "id": "FOODON:03301704", "qty": "2" }
+    ],
+    "steps": [
+      "Sauté onions until lightly golden; bloom curry powder generously.",
+      "Add chicken and cook covered with a splash of water until tender and saucy."
+    ]
+  },
+
+  {
+    "title": "Cari Ourite Lait Coco (Octopus in Coconut Milk Curry)",
+    "ingredients": [
+      { "id": "FOODON:03310498", "qty": "400 g" },
+      { "id": "FOODON:03303084", "qty": "200 ml" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" }
+    ],
+    "steps": [
+      "Cook octopus until tender; slice.",
+      "Bloom curry powder; add coconut milk (FOODON:03303084) to form a creamy curry.",
+      "Fold in octopus and simmer 2–3 min—do not boil hard."
+    ]
+  },
+
+  {
+    "title": "Cari Poisson Lait Coco (Fish in Coconut Milk Curry)",
+    "ingredients": [
+      { "id": "FOODON:00002742", "qty": "500 g" },
+      { "id": "FOODON:03303084", "qty": "200 ml" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" }
+    ],
+    "steps": [
+      "Bloom curry powder; stir in coconut milk to a gentle simmer.",
+      "Add fish and poach until just cooked and silky."
+    ]
+  },
+
+  {
+    "title": "Cari Camaron Lait Coco (Prawn in Coconut Milk Curry)",
+    "ingredients": [
+      { "id": "FOODON:03307015", "qty": "300 g" },
+      { "id": "FOODON:03303084", "qty": "200 ml" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" }
+    ],
+    "steps": [
+      "Bloom curry powder lightly; add coconut milk.",
+      "Slip in prawns and simmer 2–3 min until just pink and tender."
+    ]
+  },
+
+  {
+    "title": "Cari Poisson Salé (Salted Fish Curry)",
+    "ingredients": [
+      { "id": "FOODON:03301166", "qty": "200 g" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Desalt salted fish (FOODON:03301166) by soaking/changing water; flake.",
+      "Sauté onion; bloom curry powder; add rehydrated fish with a splash of water.",
+      "Simmer briefly to marry flavors."
+    ]
+  },
+
+  {
+    "title": "Cari Giraumon (Pumpkin Curry)",
+    "ingredients": [
+      { "id": "FOODON:00002180", "qty": "300 g" },
+      { "id": "FOODON:03301842", "qty": "1 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Cube pumpkin (FOODON:00002180).",
+      "Sauté onion; bloom curry powder; add pumpkin with a little water.",
+      "Cover and cook until soft and lightly sweet; reduce to desired thickness."
+    ]
+  },
+
+  {
+    "title": "Cari Légumes Mélangés (Mixed Vegetable Curry)",
+    "ingredients": [
+      { "id": "FOODON:00003408", "qty": "1" },
+      { "id": "FOODON:00002796", "qty": "2" },
+      { "id": "FOODON:00003495", "qty": "1 bunch" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" }
+    ],
+    "steps": [
+      "Dice chayote and potatoes; wash spinach.",
+      "Sauté onion (if using) and bloom curry powder.",
+      "Add firm veg first (potato, chayote), then leafy greens; simmer to a cohesive curry."
+    ]
+  },
+
+  {
+    "title": "Cari Ti Pois Brinzel (Pigeon Pea with Eggplant Curry)",
+    "ingredients": [
+      { "id": "FOODON:03301300", "qty": "200 g" },
+      { "id": "FOODON:00003618", "qty": "1" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" }
+    ],
+    "steps": [
+      "Cook pigeon peas until tender.",
+      "Sauté cubed eggplant; bloom curry powder in the pan.",
+      "Combine with peas and simmer to thicken."
+    ]
+  },
+
+  {
+    "title": "Cari Bred Mouroum (Moringa Leaves Curry)",
+    "ingredients": [
+      { "id": "FOODON:00005327", "qty": "1 bunch" },
+      { "id": "FOODON:03301842", "qty": "1 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Strip moringa leaves; rinse well.",
+      "Sauté onion; bloom curry powder; add leaves with a splash of water.",
+      "Cover and cook until tender and green."
+    ]
+  },
+
+  {
+    "title": "Cari Bred Martin (Spinach Curry)",
+    "ingredients": [
+      { "id": "FOODON:00003495", "qty": "1 bunch" },
+      { "id": "FOODON:03301842", "qty": "1 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Roughly chop spinach.",
+      "Sauté onion; bloom curry powder; add spinach and cook down to a soft curry."
+    ]
+  },
+
+  {
+    "title": "Cari Calou (Watercress Curry)",
+    "ingredients": [
+      { "id": "FOODON:03000033", "qty": "1 bunch" },
+      { "id": "FOODON:03301842", "qty": "1 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Wash watercress thoroughly.",
+      "Sauté onion; bloom curry powder; add watercress and cook briefly until tender but vibrant."
+    ]
+  },
+
+  {
+    "title": "Cari Tofu (Tofu Curry)",
+    "ingredients": [
+      { "id": "FOODON:00005486", "qty": "200 g" },
+      { "id": "FOODON:03301842", "qty": "1 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Cube tofu; optionally pan-sear until golden.",
+      "Sauté onion; bloom curry powder; add tofu with a little water and simmer 5 min."
+    ]
+  },
+
+  {
+    "title": "Cari Paneer (Indian Cheese Curry)",
+    "ingredients": [
+      { "id": "FOODON:03601045", "qty": "200 g" },
+      { "id": "FOODON:03301842", "qty": "1 tbsp" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Cube paneer and lightly sear (optional).",
+      "Build a curry base with onion and curry powder; add paneer and simmer gently to absorb flavors."
+    ]
+  },
+
+  {
+    "title": "Roti Cari Gros Pois (Flatbread with Broad Bean Curry)",
+    "ingredients": [
+      { "id": "FOODON:03301300", "qty": "200 g" },
+      { "id": "FOODON:03302459", "qty": "4 rotis" },
+      { "id": "FOODON:03301842", "qty": "1 tbsp" }
+    ],
+    "steps": [
+      "Cook broad/pigeon peas until tender.",
+      "Make a quick curry with curry powder and a little water; fold in peas.",
+      "Warm rotis (FOODON:03302459) and serve filled with the curry."
+    ]
+  },
+
+  {
+    "title": "Farata with Cari Legumes",
+    "ingredients": [
+      { "id": "FOODON:03302460", "qty": "4 faratas" },
+      { "id": "FOODON:00003408", "qty": "2" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" }
+    ],
+    "steps": [
+      "Prepare a simple chayote curry (see Cari Chouchou method).",
+      "Warm faratas (FOODON:03302460) and serve with the vegetable curry."
+    ]
+  },
+
+  {
+    "title": "Roti with Cari Poulet",
+    "ingredients": [
+      { "id": "FOODON:02020149", "qty": "200 g" },
+      { "id": "FOODON:03302459", "qty": "4 rotis" },
+      { "id": "FOODON:03301842", "qty": "2 tbsp" }
+    ],
+    "steps": [
+      "Cook a small batch of chicken curry (see Chicken Curry method).",
+      "Warm rotis and roll with the chicken curry inside."
+    ]
+  },
+
+  {
+    "title": "Bol Renversé (Upside Down Bowl)",
+    "ingredients": [
+      { "id": "FOODON:02020149", "qty": "200 g" },
+      { "id": "FOODON:03401095", "qty": "100 g" },
+      { "id": "FOODON:03301704", "qty": "1" },
+      { "id": "FOODON:03301705", "qty": "1 tbsp" }
+    ],
+    "steps": [
+      "Cook noodles and set aside.",
+      "Stir-fry onion and chicken strips; splash with a little vinegar and water to make a light gravy.",
+      "Pack a small bowl with the saucy stir-fry, top with noodles, press, and invert onto a plate to serve."
+    ]
+  },
+
+  {
+    "title": "Mine Frit Poulet (Chicken Fried Noodles)",
+    "ingredients": [
+      { "id": "FOODON:03401095", "qty": "200 g" },
+      { "id": "FOODON:02020149", "qty": "150 g" },
+      { "id": "FOODON:03301704", "qty": "1" },
+      { "id": "FOODON:03301115", "qty": "1 tbsp" }
+    ],
+    "steps": [
+      "Boil noodles until al dente; drain.",
+      "Stir-fry onion and chicken until cooked.",
+      "Add noodles; season with soy sauce and toss over high heat until glossy."
+    ]
+  },
+
+  {
+    "title": "Mine Frit Boeuf (Beef Fried Noodles)",
+    "ingredients": [
+      { "id": "FOODON:03401095", "qty": "200 g" },
+      { "id": "FOODON:00001282", "qty": "150 g" },
+      { "id": "FOODON:03301704", "qty": "1" },
+      { "id": "FOODON:03301115", "qty": "1 tbsp" }
+    ],
+    "steps": [
+      "Boil noodles; drain.",
+      "Stir-fry onion and beef strips until just cooked.",
+      "Add noodles and soy; toss hot and fast."
+    ]
+  },
+
+  {
+    "title": "Mine Frit Légumes (Vegetarian Fried Noodles)",
+    "ingredients": [
+      { "id": "FOODON:03401095", "qty": "200 g" },
+      { "id": "FOODON:00003408", "qty": "1" },
+      { "id": "FOODON:03301704", "qty": "1" },
+      { "id": "FOODON:03301115", "qty": "1 tbsp" }
+    ],
+    "steps": [
+      "Boil noodles; drain.",
+      "Stir-fry onion and sliced chayote until just tender.",
+      "Add noodles and soy; toss to coat."
+    ]
+  },
+
+  {
+    "title": "Bouillon Légumes (Vegetable Soup)",
+    "ingredients": [
+      { "id": "FOODON:00003408", "qty": "2" },
+      { "id": "FOODON:00003495", "qty": "1 bunch" },
+      { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Bring water to a simmer; add onion, diced chayote, and spinach.",
+      "Season lightly and cook until vegetables are tender but bright."
+    ]
+  },
+
+  {
+    "title": "Bouillon Poisson (Fish Soup)",
+    "ingredients": [
+      { "id": "FOODON:00002742", "qty": "200 g" },
+      { "id": "FOODON:03301704", "qty": "1" },
+      { "id": "FOODON:03301115", "qty": "1 tbsp" }
+    ],
+    "steps": [
+      "Simmer a light broth with water, onion, and soy sauce for seasoning.",
+      "Add chunks of fish and poach gently until just cooked. Serve immediately."
     ]
   },
   {
@@ -71,449 +842,35 @@
       { "id": "FOODON:03301842", "qty": "2 tbsp" },
       { "id": "FOODON:03301453", "qty": "2" },
       { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Sear chicken pieces (FOODON:02020149) to light gold; set aside.",
+      "Soften onion; bloom curry powder; add tomatoes to make a base.",
+      "Return chicken, add water, and simmer until tender and saucy (25–35 min)."
     ]
   },
+
   {
     "title": "Beef Curry",
     "ingredients": [
       { "id": "FOODON:00001282", "qty": "500 g" },
-      { "id": "FOODON:03301842", "qty": "2 tbsp" },
+      { "id": "FOODON:03301842", "qty": "3 tbsp" },
       { "id": "FOODON:03301453", "qty": "2" },
       { "id": "FOODON:03301704", "qty": "1" }
+    ],
+    "steps": [
+      "Sear beef pieces (FOODON:00001282) to brown; set aside.",
+      "Soften onion; bloom curry powder; add tomatoes to make a base.",
+      "Return beef, add water, and simmer until tender and saucy (60–90 min)."
     ]
   },
+
   {
     "title": "Pork Curry",
     "ingredients": [
       { "id": "FOODON:00002570", "qty": "500 g" },
-      { "id": "FOODON:03301842", "qty": "2 tbsp" },
-      { "id": "FOODON:03301453", "qty": "2" },
-      { "id": "FOODON:03301704", "qty": "1" }
-    ]
-  },
-  {
-    "title": "Fish Curry",
-    "ingredients": [
-      { "id": "FOODON:00002742", "qty": "500 g" },
-      { "id": "FOODON:03301842", "qty": "2 tbsp" },
-      { "id": "FOODON:03301453", "qty": "2" },
-      { "id": "FOODON:03301704", "qty": "1" }
-    ]
-  },
-  {
-    "title": "Shrimp Rougaille",
-    "ingredients": [
-      { "id": "FOODON:03307015", "qty": "300 g" },
-      { "id": "FOODON:03301453", "qty": "3" },
-      { "id": "FOODON:03301704", "qty": "1" },
-      { "id": "FOODON:03305217", "qty": "1 tbsp" }
-    ]
-  },
-  {
-    "title": "Smoked Marlin Salad",
-    "ingredients": [
-      { "id": "FOODON:03304348", "qty": "200 g" },
-      { "id": "FOODON:00003423", "qty": "5 leaves" },
-      { "id": "FOODON:00003320", "qty": "1" },
-      { "id": "FOODON:03301704", "qty": "1" }
-    ]
-  },
-  {
-    "title": "Sautéed Brèdes Mouroum",
-    "ingredients": [
-      { "id": "FOODON:00005327", "qty": "1 bunch" },
-      { "id": "FOODON:03301704", "qty": "1" },
-      { "id": "FOODON:03305263", "qty": "2 tbsp" }
-    ]
-  },
-  {
-    "title": "Mine Frite (Mauritian Fried Noodles)",
-    "ingredients": [
-      { "id": "FOODON:03401095", "qty": "300 g" },
-      { "id": "FOODON:03301704", "qty": "1" },
-      { "id": "FOODON:03301115", "qty": "2 tbsp" },
-      { "id": "FOODON:03307015", "qty": "150 g" }
-    ]
-  },
-  {
-    "title": "Bol Renversé",
-    "ingredients": [
-      { "id": "FOODON:03401095", "qty": "200 g" },
-      { "id": "FOODON:02020149", "qty": "200 g" },
-      { "id": "FOODON:03301704", "qty": "1" },
-      { "id": "FOODON:03301453", "qty": "1" }
-    ]
-  },
-  {
-    "title": "Bouillon Brèdes",
-    "ingredients": [
-      { "id": "FOODON:00003495", "qty": "1 bunch" },
-      { "id": "FOODON:03301704", "qty": "1" },
-      { "id": "FOODON:03544059", "qty": "1 tsp" }
-    ]
-  },
-  {
-    "title": "Farata (Mauritian Paratha)",
-    "ingredients": [
-      { "id": "FOODON:03302798", "qty": "400 g" },
-      { "id": "FOODON:03544059", "qty": "1 tsp" },
-      { "id": "FOODON:03305263", "qty": "2 tbsp" },
-      { "id": "FOODON:00004429", "qty": "150 ml" }
-    ]
-  },
-  {
-    "title": "Dal Puri (Yellow Split Pea Flatbread)",
-    "ingredients": [
-      { "id": "FOODON:03302798", "qty": "400 g" },
-      { "id": "FOODON:00005336", "qty": "200 g" },
-      { "id": "FOODON:03306739", "qty": "1 tsp" },
-      { "id": "FOODON:03544059", "qty": "1 tsp" }
-    ]
-  },
-  {
-    "title": "Dholl Curry",
-    "ingredients": [
-      { "id": "FOODON:00005336", "qty": "250 g" },
-      { "id": "FOODON:03301842", "qty": "2 tbsp" },
-      { "id": "FOODON:03301704", "qty": "1" },
-      { "id": "FOODON:03305217", "qty": "1 tbsp" }
-    ]
-  },
-  {
-    "title": "Cari Banane (Green Banana Curry)",
-    "ingredients": [
-      { "id": "FOODON:00003784", "qty": "6" },
-      { "id": "FOODON:03301842", "qty": "2 tbsp" },
-      { "id": "FOODON:03301453", "qty": "2" },
-      { "id": "FOODON:03301704", "qty": "1" }
-    ]
-  },
-  {
-    "title": "Cari Bringelle (Eggplant Curry)",
-    "ingredients": [
-      { "id": "FOODON:00003618", "qty": "2" },
-      { "id": "FOODON:03301842", "qty": "2 tbsp" },
-      { "id": "FOODON:03301453", "qty": "3" },
-      { "id": "FOODON:03301704", "qty": "1" }
-    ]
-  },
-    {
-    "title": "Cari Chouchou (Chayote Curry)",
-    "ingredients": [
-      { "id": "FOODON:00003408", "qty": "2" },
-      { "id": "FOODON:03301842", "qty": "2 tbsp" },
-      { "id": "FOODON:03301704", "qty": "1" }
-    ]
-  },
-  {
-    "title": "Cari Lalo (Taro Leaves Curry)",
-    "ingredients": [
-      { "id": "FOODON:00003495", "qty": "1 bunch" },
-      { "id": "FOODON:03301842", "qty": "1 tbsp" },
-      { "id": "FOODON:03301704", "qty": "1" }
-    ]
-  },
-  {
-    "title": "Cari Pomme de Terre (Potato Curry)",
-    "ingredients": [
-      { "id": "FOODON:00002796", "qty": "4" },
-      { "id": "FOODON:03301842", "qty": "2 tbsp" },
-      { "id": "FOODON:03301704", "qty": "1" }
-    ]
-  },
-  {
-    "title": "Cari Pois (Green Pea Curry)",
-    "ingredients": [
-      { "id": "FOODON:00005336", "qty": "200 g" },
-      { "id": "FOODON:03301842", "qty": "1 tbsp" },
-      { "id": "FOODON:03301704", "qty": "1" }
-    ]
-  },
-  {
-    "title": "Cari Ti Pois Carri (Pigeon Pea Curry)",
-    "ingredients": [
-      { "id": "FOODON:03301300", "qty": "200 g" },
-      { "id": "FOODON:03301842", "qty": "2 tbsp" },
-      { "id": "FOODON:03301704", "qty": "1" }
-    ]
-  },
-  {
-    "title": "Cari Ourite (Octopus Curry)",
-    "ingredients": [
-      { "id": "FOODON:03310498", "qty": "400 g" },
-      { "id": "FOODON:03301842", "qty": "2 tbsp" },
-      { "id": "FOODON:03301705", "qty": "2 tbsp" }
-    ]
-  },
-  {
-    "title": "Cari Crabe (Crab Curry)",
-    "ingredients": [
-      { "id": "FOODON:03411498", "qty": "3 crabs" },
-      { "id": "FOODON:03301842", "qty": "2 tbsp" },
-      { "id": "FOODON:03301705", "qty": "2 tbsp" }
-    ]
-  },
-  {
-    "title": "Cari Camaron (Freshwater Prawn Curry)",
-    "ingredients": [
-      { "id": "FOODON:03307015", "qty": "300 g" },
-      { "id": "FOODON:03301842", "qty": "2 tbsp" },
-      { "id": "FOODON:03301704", "qty": "1" }
-    ]
-  },
-  {
-    "title": "Cari Cabri (Goat Curry)",
-    "ingredients": [
-      { "id": "FOODON:00001282", "qty": "500 g" },
-      { "id": "FOODON:03301842", "qty": "3 tbsp" },
-      { "id": "FOODON:03301704", "qty": "1" }
-    ]
-  },
-  {
-    "title": "Cari Lapin (Rabbit Curry)",
-    "ingredients": [
-      { "id": "FOODON:02022098", "qty": "500 g" },
-      { "id": "FOODON:03301842", "qty": "2 tbsp" },
-      { "id": "FOODON:03301704", "qty": "1" }
-    ]
-  },
-  {
-    "title": "Cari Canard (Duck Curry)",
-    "ingredients": [
-      { "id": "FOODON:02020142", "qty": "500 g" },
-      { "id": "FOODON:03301842", "qty": "2 tbsp" },
-      { "id": "FOODON:03301704", "qty": "1" }
-    ]
-  },
-  {
-    "title": "Cari Dinde (Turkey Curry)",
-    "ingredients": [
-      { "id": "FOODON:02022098", "qty": "500 g" },
-      { "id": "FOODON:03301842", "qty": "2 tbsp" },
-      { "id": "FOODON:03301704", "qty": "1" }
-    ]
-  },
-  {
-    "title": "Boulettes Soup (Mauritian Dim Sum Soup)",
-    "ingredients": [
-      { "id": "FOODON:03307015", "qty": "200 g" },
-      { "id": "FOODON:03301704", "qty": "1" },
-      { "id": "FOODON:03301115", "qty": "1 tbsp" }
-    ]
-  },
-  {
-    "title": "Haleem (Mauritian Lentil Stew)",
-    "ingredients": [
-      { "id": "FOODON:00005336", "qty": "150 g" },
-      { "id": "FOODON:03301300", "qty": "100 g" },
-      { "id": "FOODON:00004320", "qty": "50 g" }
-    ]
-  },
-  {
-    "title": "Kalia (Mauritian Beef Curry)",
-    "ingredients": [
-      { "id": "FOODON:00001282", "qty": "400 g" },
-      { "id": "FOODON:03301842", "qty": "3 tbsp" },
-      { "id": "FOODON:03301704", "qty": "2" },
-      { "id": "FOODON:03301844", "qty": "1 tsp" }
-    ]
-  },
-  {
-    "title": "Cari Masala Poisson (Fish Masala Curry)",
-    "ingredients": [
-      { "id": "FOODON:00002742", "qty": "500 g" },
-      { "id": "FOODON:03301842", "qty": "2 tbsp" },
-      { "id": "FOODON:03301453", "qty": "2" }
-    ]
-  },
-  {
-    "title": "Cari Kalia Poulet (Chicken Kalia)",
-    "ingredients": [
-      { "id": "FOODON:02020149", "qty": "500 g" },
-      { "id": "FOODON:03301842", "qty": "3 tbsp" },
-      { "id": "FOODON:03301704", "qty": "2" }
-    ]
-  },
-  {
-    "title": "Cari Ourite Lait Coco (Octopus in Coconut Milk Curry)",
-    "ingredients": [
-      { "id": "FOODON:03310498", "qty": "400 g" },
-      { "id": "FOODON:03303084", "qty": "200 ml" },
       { "id": "FOODON:03301842", "qty": "2 tbsp" }
-    ]
-  },
-  {
-    "title": "Cari Poisson Lait Coco (Fish in Coconut Milk Curry)",
-    "ingredients": [
-      { "id": "FOODON:00002742", "qty": "500 g" },
-      { "id": "FOODON:03303084", "qty": "200 ml" },
-      { "id": "FOODON:03301842", "qty": "2 tbsp" }
-    ]
-  },
-  {
-    "title": "Cari Camaron Lait Coco (Prawn in Coconut Milk Curry)",
-    "ingredients": [
-      { "id": "FOODON:03307015", "qty": "300 g" },
-      { "id": "FOODON:03303084", "qty": "200 ml" },
-      { "id": "FOODON:03301842", "qty": "2 tbsp" }
-    ]
-  },
-    {
-    "title": "Cari Poisson Salé (Salted Fish Curry)",
-    "ingredients": [
-      { "id": "FOODON:03301166", "qty": "200 g" },
-      { "id": "FOODON:03301842", "qty": "2 tbsp" },
-      { "id": "FOODON:03301704", "qty": "1" }
-    ]
-  },
-  {
-    "title": "Cari Bringelle (Eggplant Curry)",
-    "ingredients": [
-      { "id": "FOODON:00003618", "qty": "2" },
-      { "id": "FOODON:03301842", "qty": "1 tbsp" },
-      { "id": "FOODON:03301704", "qty": "1" }
-    ]
-  },
-  {
-    "title": "Cari Giraumon (Pumpkin Curry)",
-    "ingredients": [
-      { "id": "FOODON:00002180", "qty": "300 g" },
-      { "id": "FOODON:03301842", "qty": "1 tbsp" },
-      { "id": "FOODON:03301704", "qty": "1" }
-    ]
-  },
-  {
-    "title": "Cari Légumes Mélangés (Mixed Vegetable Curry)",
-    "ingredients": [
-      { "id": "FOODON:00003408", "qty": "1" },
-      { "id": "FOODON:00002796", "qty": "2" },
-      { "id": "FOODON:00003495", "qty": "1 bunch" },
-      { "id": "FOODON:03301842", "qty": "2 tbsp" }
-    ]
-  },
-  {
-    "title": "Cari Ti Pois Brinzel (Pigeon Pea with Eggplant Curry)",
-    "ingredients": [
-      { "id": "FOODON:03301300", "qty": "200 g" },
-      { "id": "FOODON:00003618", "qty": "1" },
-      { "id": "FOODON:03301842", "qty": "2 tbsp" }
-    ]
-  },
-  {
-    "title": "Cari Bred Mouroum (Moringa Leaves Curry)",
-    "ingredients": [
-      { "id": "FOODON:00005327", "qty": "1 bunch" },
-      { "id": "FOODON:03301842", "qty": "1 tbsp" },
-      { "id": "FOODON:03301704", "qty": "1" }
-    ]
-  },
-  {
-    "title": "Cari Bred Martin (Spinach Curry)",
-    "ingredients": [
-      { "id": "FOODON:00003495", "qty": "1 bunch" },
-      { "id": "FOODON:03301842", "qty": "1 tbsp" },
-      { "id": "FOODON:03301704", "qty": "1" }
-    ]
-  },
-  {
-    "title": "Cari Calou (Watercress Curry)",
-    "ingredients": [
-      { "id": "FOODON:03000033", "qty": "1 bunch" },
-      { "id": "FOODON:03301842", "qty": "1 tbsp" },
-      { "id": "FOODON:03301704", "qty": "1" }
-    ]
-  },
-  {
-    "title": "Cari Tofu (Tofu Curry)",
-    "ingredients": [
-      { "id": "FOODON:00005486", "qty": "200 g" },
-      { "id": "FOODON:03301842", "qty": "1 tbsp" },
-      { "id": "FOODON:03301704", "qty": "1" }
-    ]
-  },
-  {
-    "title": "Cari Paneer (Indian Cheese Curry)",
-    "ingredients": [
-      { "id": "FOODON:03601045", "qty": "200 g" },
-      { "id": "FOODON:03301842", "qty": "1 tbsp" },
-      { "id": "FOODON:03301704", "qty": "1" }
-    ]
-  },
-  {
-    "title": "Roti Cari Gros Pois (Flatbread with Broad Bean Curry)",
-    "ingredients": [
-      { "id": "FOODON:03301300", "qty": "200 g" },
-      { "id": "FOODON:03302459", "qty": "4 rotis" },
-      { "id": "FOODON:03301842", "qty": "1 tbsp" }
-    ]
-  },
-  {
-    "title": "Farata with Cari Legumes",
-    "ingredients": [
-      { "id": "FOODON:03302460", "qty": "4 faratas" },
-      { "id": "FOODON:00003408", "qty": "2" },
-      { "id": "FOODON:03301842", "qty": "2 tbsp" }
-    ]
-  },
-  {
-    "title": "Roti with Cari Poulet",
-    "ingredients": [
-      { "id": "FOODON:02020149", "qty": "200 g" },
-      { "id": "FOODON:03302459", "qty": "4 rotis" },
-      { "id": "FOODON:03301842", "qty": "2 tbsp" }
-    ]
-  },
-  {
-    "title": "Bol Renversé (Upside Down Bowl)",
-    "ingredients": [
-      { "id": "FOODON:02020149", "qty": "200 g" },
-      { "id": "FOODON:03401095", "qty": "100 g" },
-      { "id": "FOODON:03301704", "qty": "1" },
-      { "id": "FOODON:03301705", "qty": "1 tbsp" }
-    ]
-  },
-  {
-    "title": "Mine Frit Poulet (Chicken Fried Noodles)",
-    "ingredients": [
-      { "id": "FOODON:03401095", "qty": "200 g" },
-      { "id": "FOODON:02020149", "qty": "150 g" },
-      { "id": "FOODON:03301704", "qty": "1" },
-      { "id": "FOODON:03301115", "qty": "1 tbsp" }
-    ]
-  },
-  {
-    "title": "Mine Frit Boeuf (Beef Fried Noodles)",
-    "ingredients": [
-      { "id": "FOODON:03401095", "qty": "200 g" },
-      { "id": "FOODON:00001282", "qty": "150 g" },
-      { "id": "FOODON:03301704", "qty": "1" },
-      { "id": "FOODON:03301115", "qty": "1 tbsp" }
-    ]
-  },
-  {
-    "title": "Mine Frit Légumes (Vegetarian Fried Noodles)",
-    "ingredients": [
-      { "id": "FOODON:03401095", "qty": "200 g" },
-      { "id": "FOODON:00003408", "qty": "1" },
-      { "id": "FOODON:03301704", "qty": "1" },
-      { "id": "FOODON:03301115", "qty": "1 tbsp" }
-    ]
-  },
-  {
-    "title": "Bouillon Légumes (Vegetable Soup)",
-    "ingredients": [
-      { "id": "FOODON:00003408", "qty": "2" },
-      { "id": "FOODON:00003495", "qty": "1 bunch" },
-      { "id": "FOODON:03301704", "qty": "1" }
-    ]
-  },
-  {
-    "title": "Bouillon Poisson (Fish Soup)",
-    "ingredients": [
-      { "id": "FOODON:00002742", "qty": "200 g" },
-      { "id": "FOODON:03301704", "qty": "1" },
-      { "id": "FOODON:03301115", "qty": "1 tbsp" }
+
     ]
   }
 ]
-

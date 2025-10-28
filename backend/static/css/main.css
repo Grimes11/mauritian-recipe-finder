@@ -1,6 +1,7 @@
 /* ==========================================================================
-   Mauritian Recipe Finder — main.css
-   Mobile-first, elegant, accessible. Works across all pages.
+   Mauritian Recipe Finder — main.css (enhanced)
+   - Aligned to current templates (chips, toolbar, grids, skeletons, etc.)
+   - Mobile-first, accessible, high-contrast where it counts.
    ========================================================================== */
 
 /* ------------------------------ CSS Variables ----------------------------- */
@@ -21,12 +22,19 @@
   --danger:        #e11d48;
   --warning:       #f59e0b;
   --chip:          rgba(255,255,255,0.08);
+  --chip-strong:   rgba(255,255,255,0.14);
   --shadow-1:      0 10px 28px rgba(0,0,0,.35), 0 4px 10px rgba(0,0,0,.25);
   --shadow-2:      0 30px 80px rgba(0,0,0,.4);
   --radius:        18px;
   --radius-lg:     24px;
   --radius-pill:   999px;
   --blur:          saturate(150%) blur(8px);
+  --spacing-1:     6px;
+  --spacing-2:     10px;
+  --spacing-3:     12px;
+  --spacing-4:     14px;
+  --spacing-5:     16px;
+  --spacing-6:     20px;
 }
 
 /* Light mode */
@@ -44,6 +52,7 @@
     --primary-700:#1e40af;
     --accent:     #0891b2;
     --chip:       rgba(16,24,40,0.06);
+    --chip-strong:rgba(16,24,40,0.10);
     --shadow-1:   0 12px 28px rgba(16,24,40,.14), 0 6px 14px rgba(16,24,40,.08);
     --shadow-2:   0 36px 80px rgba(16,24,40,.18);
   }
@@ -81,6 +90,13 @@ a:hover{ text-decoration: underline; }
   padding: clamp(16px, 3vw, 28px);
 }
 
+/* ----------------------- Utility Headings (used in HTML) ------------------ */
+
+.h1{ font-size: clamp(28px, 5vw, 36px); line-height:1.2; margin:0; }
+.h2{ font-size: clamp(22px, 4.2vw, 28px); line-height:1.25; margin:0; }
+.h3{ font-size: clamp(18px, 3.6vw, 22px); line-height:1.3; margin:0; }
+.h4{ font-size: clamp(16px, 3.2vw, 18px); line-height:1.35; margin:0; }
+
 /* ------------------------------ App Header/Nav ---------------------------- */
 
 .app-header{
@@ -95,7 +111,7 @@ a:hover{ text-decoration: underline; }
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap: 12px;
+  gap: var(--spacing-3);
 }
 
 .brand{
@@ -116,6 +132,17 @@ a:hover{ text-decoration: underline; }
   color: var(--muted);
   font-size: 12px;
 }
+
+/* ------------------------------- Toolbar ---------------------------------- */
+
+.toolbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-5);
+}
+.toolbar__right{ display:flex; gap: var(--spacing-2); }
 
 /* ------------------------------- Buttons --------------------------------- */
 
@@ -140,23 +167,36 @@ a:hover{ text-decoration: underline; }
   color: var(--text);
   box-shadow: none;
 }
-.btn-outline:hover{
-  background: var(--chip);
+.btn-outline:hover{ background: var(--chip); }
+
+/* Secondary button actually used in HTML */
+.btn-secondary{
+  background: var(--surface);
+  border: 1px solid var(--card-border);
+  color: var(--text);
+  box-shadow: none;
 }
+.btn-secondary:hover{ background: var(--chip-strong); }
 
 .btn-small{ padding: 8px 12px; font-size: 13px; }
 
+/* Icon-only buttons used in toolbars, cards */
+.icon-btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  width: 36px; height: 36px;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  background: var(--surface); color: var(--text);
+  transition: transform .06s ease, background .2s ease, border-color .2s ease, filter .2s ease;
+  text-decoration: none;
+}
+.icon-btn:hover{ background: var(--chip); border-color: rgba(255,255,255,.25); filter: brightness(1.05); }
+.icon-btn:active{ transform: scale(.96); }
+
 /* ----------------------------- Form Elements ----------------------------- */
 
-.form{
-  display: grid;
-  gap: 12px;
-}
-
-.field{
-  display:grid; gap:6px;
-}
-
+.form{ display: grid; gap: var(--spacing-3); }
+.field{ display:grid; gap:6px; }
 label{ font-weight:600; color: var(--muted); font-size: 13px; }
 
 .input, textarea, select{
@@ -169,9 +209,7 @@ label{ font-weight:600; color: var(--muted); font-size: 13px; }
   box-shadow: 0 1px 0 rgba(255,255,255,.05) inset;
   transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
 }
-
 .input::placeholder{ color: #8a93a3; }
-
 .input:focus, textarea:focus, select:focus{
   outline: none;
   border-color: var(--primary);
@@ -179,16 +217,14 @@ label{ font-weight:600; color: var(--muted); font-size: 13px; }
 }
 
 /* Input group with button */
-.input-group{
-  display:flex; gap:10px; align-items:stretch;
-}
+.input-group{ display:flex; gap:10px; align-items:stretch; }
 .input-group .input{ flex:1; }
 
-/* Toggle Rows */
+/* Grid rows */
 .form-row{
   display:grid;
   grid-template-columns: repeat(2, minmax(0,1fr));
-  gap: 10px;
+  gap: var(--spacing-2);
 }
 @media (min-width: 680px){
   .form-row{ grid-template-columns: repeat(4, minmax(0,1fr)); }
@@ -203,19 +239,80 @@ label{ font-weight:600; color: var(--muted); font-size: 13px; }
 }
 .checkbox input{ width:18px; height:18px; }
 
-/* Spinner */
-#spinner{
-  display:none; margin-left:10px; position:relative; width:18px; height:18px;
+/* ----------------------------- Chips & Pills ------------------------------ */
+
+.chips{
+  display:flex; flex-wrap: wrap; gap: 8px; margin-top: 8px;
 }
-#spinner::before{
+
+.chip{
+  display:inline-flex; align-items:center; gap:8px;
+  padding: 8px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--chip);
+  color: var(--text);
+  border: 1px solid var(--card-border);
+  font-size: 13px; font-weight:600;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, transform .06s ease;
+}
+.chip:hover{ background: var(--chip-strong); }
+.chip:active{ transform: translateY(1px); }
+
+.chip--selected{
+  background: linear-gradient(135deg, rgba(59,130,246,.28), rgba(34,211,238,.22));
+  border-color: rgba(255,255,255,.28);
+}
+.chip--readonly{
+  cursor: default;
+  opacity: .9;
+}
+.chip--warn{
+  background: rgba(225,29,72,.18);
+  color: #fecdd3; /* readable on dark */
+  border-color: rgba(225,29,72,.35);
+}
+.chip--info{
+  background: rgba(59,130,246,.2);
+  color: #e6f1ff;
+  border-color: rgba(59,130,246,.35);
+}
+
+.chip-select{ display:flex; flex-wrap: wrap; gap: 8px; }
+
+/* Pill cloud for common ingredients */
+.pill-cloud{ display:flex; flex-wrap:wrap; gap: 8px; }
+.pill{
+  display:inline-flex; align-items:center;
+  padding: 8px 12px; border-radius: var(--radius-pill);
+  background: var(--surface); border: 1px solid var(--card-border);
+  color: var(--text); font-weight:600; font-size:13px; cursor:pointer;
+}
+.pill:hover{ background: var(--chip); }
+
+/* ------------------------------- Spinner ---------------------------------- */
+
+/* Unify around `.spinner` (works with #searching-spinner) */
+.spinner{
+  display:inline-flex; gap:8px; align-items:center; position:relative;
+  font-weight:600; color: var(--muted);
+}
+.spinner::before{
   content:"";
-  position:absolute; inset:0;
-  border-radius:50%;
+  width: 16px; height: 16px; border-radius:50%;
   border: 2px solid rgba(255,255,255,.25);
   border-top-color: #fff;
   animation: spin .8s linear infinite;
 }
+[hidden]{ display:none !important; }
 @keyframes spin{ to{ transform: rotate(360deg); } }
+
+/* Back-compat with the old #spinner id (safe to keep) */
+#spinner{ display:none; margin-left:10px; position:relative; width:18px; height:18px; }
+#spinner::before{
+  content:""; position:absolute; inset:0; border-radius:50%;
+  border: 2px solid rgba(255,255,255,.25); border-top-color:#fff; animation: spin .8s linear infinite;
+}
 
 /* ------------------------------- Sections -------------------------------- */
 
@@ -236,13 +333,18 @@ label{ font-weight:600; color: var(--muted); font-size: 13px; }
   border: 1px solid var(--card-border);
   box-shadow: var(--shadow-2);
 }
-
-.hero h1{
-  margin: 0 0 6px 0;
-  font-size: clamp(22px, 4.5vw, 32px);
-  letter-spacing: .2px;
-}
+.hero h1{ margin: 0 0 6px 0; font-size: clamp(22px, 4.5vw, 32px); letter-spacing: .2px; }
 .hero p{ color: var(--muted); margin: 0; }
+
+/* ------------------------------ Notes/Banners ----------------------------- */
+
+.note{
+  display:flex; align-items:center; gap:10px;
+  padding: 10px 12px; border-radius: 12px;
+  background: linear-gradient(90deg, rgba(59,130,246,.18), rgba(34,211,238,.14));
+  border: 1px solid var(--card-border);
+  color: var(--text);
+}
 
 /* ------------------------------ Empty State ------------------------------- */
 
@@ -256,14 +358,9 @@ label{ font-weight:600; color: var(--muted); font-size: 13px; }
   box-shadow: var(--shadow-1);
   text-align:center;
 }
+.empty-emoji{ font-size: 42px; margin-bottom: 4px; }
 
-.empty-emoji{
-  font-size: 42px; margin-bottom: 4px;
-}
-
-.tips{
-  display:grid; gap:10px; margin: 16px 0;
-}
+.tips{ display:grid; gap:10px; margin: 16px 0; }
 .tip{
   display:flex; gap:12px; align-items:flex-start;
   padding: 12px 14px;
@@ -275,18 +372,58 @@ label{ font-weight:600; color: var(--muted); font-size: 13px; }
 
 .empty-actions{ display:flex; gap:10px; justify-content:center; flex-wrap: wrap; }
 
-/* ------------------------------ Results Grid ------------------------------ */
+/* ------------------------------ Results Layout ---------------------------- */
 
+/* Old selector kept for back-compat (unused by your HTML now) */
 #results-root{
-  display:grid;
-  gap: 14px;
-  margin-top: 14px;
-  grid-template-columns: 1fr;
+  display:grid; gap: 14px; margin-top: 14px; grid-template-columns: 1fr;
 }
 @media (min-width: 560px){ #results-root{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
 @media (min-width: 920px){ #results-root{ grid-template-columns: repeat(3, minmax(0,1fr)); } }
 
+/* Actual container used in templates */
+.cards-list{
+  display:grid; gap: 14px; margin-top: 14px; grid-template-columns: 1fr;
+}
+@media (min-width: 560px){ .cards-list{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (min-width: 920px){ .cards-list{ grid-template-columns: repeat(3, minmax(0,1fr)); } }
+
+/* Generic grid (popular mini) */
+.cards-grid{
+  display:grid; gap: 12px; grid-template-columns: 1fr 1fr;
+}
+.cards-grid.mini{
+  grid-template-columns: repeat(3, minmax(0,1fr));
+}
+
+/* ------------------------------ Skeletons -------------------------------- */
+
+.skeleton{
+  border-radius: var(--radius);
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  height: 120px;
+  position: relative;
+  overflow: hidden;
+}
+.skeleton::after{
+  content:"";
+  position:absolute; inset:0;
+  background-image: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);
+  transform: translateX(-100%);
+  animation: shimmer 1.2s infinite;
+}
+@keyframes shimmer{ to { transform: translateX(100%); } }
+
 /* ------------------------------ Recipe Cards ------------------------------ */
+
+.card{
+  padding: 16px; border-radius: var(--radius);
+  background: var(--card); border: 1px solid var(--card-border);
+  backdrop-filter: var(--blur);
+  box-shadow: var(--shadow-1);
+}
+.card__body{ display:block; }
 
 .recipe-card{
   position:relative;
@@ -298,6 +435,7 @@ label{ font-weight:600; color: var(--muted); font-size: 13px; }
   backdrop-filter: var(--blur);
   box-shadow: var(--shadow-1);
   transition: transform .15s ease, box-shadow .25s ease, border-color .25s ease;
+  animation: floatIn .25s ease both;
 }
 .recipe-card:hover{
   transform: translateY(-2px);
@@ -308,12 +446,7 @@ label{ font-weight:600; color: var(--muted); font-size: 13px; }
 .recipe-card__header{
   display:flex; align-items:flex-start; justify-content:space-between; gap: 10px;
 }
-
-.recipe-card__title{
-  margin: 0;
-  font-size: 18px;
-  line-height: 1.35;
-}
+.recipe-card__title{ margin: 0; font-size: 18px; line-height: 1.35; }
 
 .fav-btn{
   display:inline-flex; align-items:center; justify-content:center;
@@ -327,18 +460,32 @@ label{ font-weight:600; color: var(--muted); font-size: 13px; }
 .fav-btn:active{ transform: scale(.96); }
 .fav-emoji{ font-size: 18px; transform: translateY(1px); }
 
-.recipe-card__score{
+/* Quick stats row in results cards */
+.quick{
   display:flex; gap:8px; align-items:center; flex-wrap: wrap;
 }
-
-.score-chip, .meta-chip{
+.meta-chip{
   display:inline-flex; align-items:center; gap:6px;
-  padding: 6px 10px; border-radius: 999px; font-weight:600; font-size: 12px;
-  background: var(--chip);
-  color: var(--muted);
+  padding: 6px 10px; border-radius: 999px; font-weight:700; font-size: 12px;
+  background: var(--chip); color: var(--muted); border: 1px solid var(--card-border);
 }
-.score-chip{ background: linear-gradient(135deg, rgba(59,130,246,.20), rgba(34,211,238,.18)); color: #e6f1ff; }
+.quick span{
+  /* treat bare spans as meta-chips */
+  display:inline-flex; align-items:center; gap:6px;
+  padding: 6px 10px; border-radius: 999px; font-weight:700; font-size: 12px;
+  background: var(--chip); color: var(--muted); border: 1px solid var(--card-border);
+}
+.quick span:first-child{ /* score */
+  background: linear-gradient(135deg, rgba(59,130,246,.20), rgba(34,211,238,.18));
+  color: #e6f1ff; border-color: rgba(255,255,255,.25);
+}
+.quick .warn{
+  background: rgba(225,29,72,.18);
+  color: #fecdd3;
+  border-color: rgba(225,29,72,.35);
+}
 
+/* Ingredients preview list (detail page) */
 .recipe-card__ings{
   list-style: none; padding: 0; margin: 2px 0 0 0;
   display:grid; gap:6px;
@@ -352,14 +499,28 @@ label{ font-weight:600; color: var(--muted); font-size: 13px; }
 }
 .recipe-card__ings .qty{ color: var(--muted); margin-left: 6px; }
 
-.recipe-card__footer{ display:flex; justify-content:flex-end; }
+.recipe-card__footer{ display:flex; justify-content:flex-end; gap: 8px; }
+
+/* Clickable link card (popular recipes) */
+.link-card{
+  display:block;
+  border-radius: var(--radius);
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-1);
+  text-decoration:none; color: var(--text);
+  transition: transform .12s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.link-card:hover{
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,.22);
+  box-shadow: 0 20px 50px rgba(0,0,0,.35);
+}
+.link-card .card__body{ padding: 14px; }
 
 /* ---------------------------- Recipe Detail Page -------------------------- */
 
-.detail{
-  display:grid; gap: 14px;
-}
-
+.detail{ display:grid; gap: 14px; }
 .detail-card{
   padding: 18px;
   border-radius: var(--radius-lg);
@@ -368,24 +529,15 @@ label{ font-weight:600; color: var(--muted); font-size: 13px; }
   backdrop-filter: var(--blur);
   box-shadow: var(--shadow-2);
 }
-
 .detail-header{
   display:flex; align-items:flex-start; justify-content:space-between; gap:10px; flex-wrap: wrap;
 }
 .detail-header h1{ margin: 0; font-size: clamp(20px, 4.5vw, 28px); }
+.detail-meta{ display:flex; gap:10px; flex-wrap: wrap; color: var(--muted); }
 
-.detail-meta{
-  display:flex; gap:10px; flex-wrap: wrap; color: var(--muted);
-}
-
-.detail-grid{
-  display:grid; gap: 14px;
-}
+.detail-grid{ display:grid; gap: 14px; }
 @media (min-width: 900px){
-  .detail-grid{
-    grid-template-columns: 1.25fr .75fr;
-    align-items: start;
-  }
+  .detail-grid{ grid-template-columns: 1.25fr .75fr; align-items: start; }
 }
 
 .steps{
@@ -409,9 +561,7 @@ label{ font-weight:600; color: var(--muted); font-size: 13px; }
   border-radius: 999px; font-size: 12px; box-shadow: var(--shadow-1);
 }
 
-.ings{
-  list-style: none; margin:0; padding:0; display:grid; gap:8px;
-}
+.ings{ list-style: none; margin:0; padding:0; display:grid; gap:8px; }
 .ing{
   display:flex; justify-content:space-between; gap:12px; align-items:center;
   padding: 10px 12px; border-radius: 12px;
@@ -420,6 +570,33 @@ label{ font-weight:600; color: var(--muted); font-size: 13px; }
 }
 .ing .label{ font-weight:600; }
 .ing .qty{ color: var(--muted); }
+
+/* ------------------------------ Changes (details) ------------------------- */
+
+.changes{
+  margin-top: 6px;
+}
+.changes summary{
+  cursor: pointer;
+  list-style: none;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: var(--surface);
+  border: 1px solid var(--card-border);
+}
+.changes summary::-webkit-details-marker{ display:none; }
+
+.change-list{
+  margin: 10px 0 0 0; padding-left: 14px;
+}
+.change-list li{
+  margin: 6px 0;
+}
+.change-list .badge{
+  display:inline-flex; align-items:center; gap:6px;
+  padding: 4px 8px; border-radius: 999px; font-size: 12px; font-weight:700;
+  background: var(--chip); color: var(--muted); border: 1px solid var(--card-border);
+}
 
 /* ------------------------------ Footer / Misc ----------------------------- */
 
@@ -431,10 +608,13 @@ label{ font-weight:600; color: var(--muted); font-size: 13px; }
   font-size: 13px;
 }
 
-/* Muted helper */
 .muted{ color: var(--muted); }
+.center{ text-align:center; }
+.big-emoji{ font-size: 42px; }
+.actions{ display:flex; gap: 10px; justify-content:center; flex-wrap: wrap; }
 
-/* Toast host from JS is styled inline; nothing needed here */
+/* No-results card helper */
+.card.empty .card__body{ text-align:center; }
 
 /* ------------------------------ Accessibility ----------------------------- */
 
@@ -478,28 +658,16 @@ label{ font-weight:600; color: var(--muted); font-size: 13px; }
 .table tr td:first-child{ border-radius: 12px 0 0 12px; }
 .table tr td:last-child{ border-radius: 0 12px 12px 0; }
 
-/* ------------------------------- Cards (generic) -------------------------- */
-
-.card{
-  padding: 16px; border-radius: var(--radius);
-  background: var(--card); border: 1px solid var(--card-border);
-  backdrop-filter: var(--blur);
-  box-shadow: var(--shadow-1);
-}
-
 /* ------------------------------- Animations ------------------------------- */
 
 @keyframes floatIn {
   from { transform: translateY(6px); opacity: 0; }
   to   { transform: translateY(0); opacity: 1; }
 }
-.recipe-card{ animation: floatIn .25s ease both; }
 
 /* ------------------------------- Print tweaks ----------------------------- */
 @media print{
-  .app-header, .nav, .btn, .fav-btn, #toast-host{ display:none !important; }
+  .app-header, .nav, .btn, .fav-btn, .icon-btn, #toast-host{ display:none !important; }
   body{ background: #fff; color: #111; }
-  .card, .recipe-card, .detail-card{
-    background: #fff; border: 1px solid #ccc; box-shadow: none;
-  }
+  .card, .recipe-card, .detail-card{ background: #fff; border: 1px solid #ccc; box-shadow: none; }
 }

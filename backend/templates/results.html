@@ -71,7 +71,7 @@
   const diet  = (qs.get("diet")  || "").split(",").map(s => s.trim()).filter(Boolean);
   const limit = parseInt(qs.get("limit") || "20", 10);
 
-  // NEW: detect whether query params exist; if not, use session fallback
+  // Detect whether query params exist; if not, use session fallback
   const hasParams = [...qs.keys()].length > 0;
   const lastQuery = !hasParams ? JSON.parse(sessionStorage.getItem("lastQuery") || "null") : null;
 
@@ -96,7 +96,7 @@
   async function fetchResults() {
     document.getElementById("adapting-note").hidden = false;
 
-    // NEW: build POST body from either URL params or session fallback
+    // Build POST body from either URL params or session fallback
     const body = hasParams ? {
       have,
       avoid,
@@ -200,6 +200,7 @@
 
       // keep for detail page to show adapted info if needed
       sessionStorage.setItem("searchResults", JSON.stringify(data));
+      sessionStorage.setItem("mrf:last-results", JSON.stringify(data));
 
       renderResults(data);
     } catch (e) {

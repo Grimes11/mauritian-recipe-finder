@@ -4,7 +4,7 @@
 
   { "local": ["bred", "brède", "bredes"], "target_id": "FOODON:00003495", "target_label": "spinach leaf", "priority": 2, "notes": "Generic ‘brède’ varies by plant; spinach as safe fallback.", "tags": ["leafy"] },
   { "local": ["bred mouroum", "brède mouroum", "moringa"], "target_id": "FOODON:00005327", "target_label": "moringa leaf", "priority": 1, "notes": "Common Mauritian brède from moringa.", "tags": ["leafy"] },
-  { "local": ["bred mouroum (frais)"], "target_id": "FOODON:00005328", "target_label": "moringa leaf (raw)", "priority": 1, "notes": "Fresh/raw leaf variant.", "tags": ["leafy"] },
+  { "local": ["bred mouroum (frais)"], "target_id": "FOODON:00005328", "target_label": "moringa leaf (raw)", "priority": 1, "tags": ["leafy"] },
 
   { "local": ["piment", "piment cari", "piment vert", "piment rouge", "ti piment", "piment écrasé", "piment crasé"], "target_id": "FOODON:00003744", "target_label": "chili pepper", "priority": 1, "notes": "Covers most fresh chili forms.", "tags": ["spice"] },
   { "local": ["gros piment", "poivron", "piment doux"], "target_id": "FOODON:00003546", "target_label": "bell pepper", "priority": 1, "notes": "Mild ‘gros piment’ is capsicum/bell pepper.", "tags": ["veg"] },
@@ -65,9 +65,7 @@
   { "local": ["romarin"], "target_id": "FOODON:00003809", "target_label": "rosemary leaf", "priority": 1, "tags": ["herb"] },
   { "local": ["cresson", "cresson de jardin"], "target_id": "FOODON:03000033", "target_label": "garden cress leaf", "priority": 1, "tags": ["herb"] },
 
-  { "local": ["oignon", "z’oignon", "oignon rouge"], "target_id": "FOODON:00003515", "target_label": "red onion (raw)", "priority": 1, "tags": ["veg"] },
-  { "local": ["oignon jaune"], "target_id": "FOODON:00003517", "target_label": "yellow onion", "priority": 1, "tags": ["veg"] },
-  { "local": ["oignon blanc"], "target_id": "FOODON:00003518", "target_label": "white onion", "priority": 1, "tags": ["veg"] },
+  { "local": ["oignon", "z’oignon", "oignon rouge", "oignon jaune", "oignon blanc"], "target_id": "FOODON:03301704", "target_label": "onion (raw)", "priority": 1, "tags": ["veg", "aromatic"] },
   { "local": ["z’oignon vert", "ciboule", "cive", "spring onion"], "target_id": "FOODON:00003697", "target_label": "scallion", "priority": 1, "tags": ["veg"] },
   { "local": ["échalote"], "target_id": "FOODON:03311688", "target_label": "shallots chopped in oil", "priority": 2, "notes": "Closest in cache; fresh shallot not listed—use onion as fallback if needed.", "tags": ["condiment"] },
 
@@ -75,6 +73,7 @@
   { "local": ["pâte d’ail", "ail écrasé"], "target_id": "FOODON:03305217", "target_label": "garlic paste", "priority": 1, "tags": ["aromatic"] },
   { "local": ["huile d’ail"], "target_id": "FOODON:03309417", "target_label": "garlic oil", "priority": 1, "tags": ["aromatic"] },
   { "local": ["gingembre", "gengibre"], "target_id": "FOODON:03310490", "target_label": "ginger (ground)", "priority": 2, "notes": "Use ground as proxy when fresh root absent in cache.", "tags": ["spice"] },
+  { "local": ["gingembre (frais)", "gingembre frais"], "target_id": "FOODON:00001895", "target_label": "ginger root (raw)", "priority": 1, "tags": ["aromatic"] },
 
   { "local": ["pommes de terre", "pomme de terre", "patate"], "target_id": "FOODON:00002796", "target_label": "potato (whole or pieces)", "priority": 1, "tags": ["veg"] },
   { "local": ["patate douce"], "target_id": "FOODON:00003445", "target_label": "sweet potato", "priority": 1, "tags": ["veg"] },
@@ -86,6 +85,8 @@
   { "local": ["concombre"], "target_id": "FOODON:00001795", "target_label": "cucumber food product", "priority": 1, "tags": ["veg"] },
   { "local": ["courgette"], "target_id": "FOODON:00002448", "target_label": "zucchini food product", "priority": 1, "tags": ["veg"] },
   { "local": ["poireau"], "target_id": "FOODON:03540555", "target_label": "05550 - leeks (efsa foodex2)", "priority": 1, "tags": ["veg"] },
+
+  { "local": ["chouchou", "chayote"], "target_id": "FOODON:00003408", "target_label": "chayote", "priority": 1, "tags": ["veg"] },
 
   { "local": ["citron", "zitrin jaune"], "target_id": "FOODON:00003320", "target_label": "lemon (whole or pieces)", "priority": 1, "tags": ["acid"] },
   { "local": ["zeste citron"], "target_id": "FOODON:00003284", "target_label": "lemon zest", "priority": 1, "tags": ["acid"] },
@@ -101,6 +102,8 @@
   { "local": ["riz bouilli"], "target_id": "FOODON:03310654", "target_label": "rice (boiled)", "priority": 1, "tags": ["grain"] },
   { "local": ["riz frit", "mine frite riz"], "target_id": "FOODON:00002849", "target_label": "fried rice", "priority": 1, "tags": ["dish-base"] },
   { "local": ["riz parfumé", "riz long"], "target_id": "FOODON:00003786", "target_label": "long grain rice kernel", "priority": 1, "tags": ["grain"] },
+
+  { "local": ["banane verte", "green banana"], "target_id": "FOODON:00003784", "target_label": "green banana", "priority": 1, "tags": ["starch"] },
 
   { "local": ["huile", "huile végétale"], "target_id": "FOODON:03305263", "target_label": "vegetable oil", "priority": 1, "tags": ["fat"] },
   { "local": ["huile sésame"], "target_id": "FOODON:03304152", "target_label": "sesame oil", "priority": 1, "tags": ["fat"] },
@@ -129,7 +132,7 @@
   { "local": ["moules"], "target_id": "FOODON:03301706", "target_label": "mussel (raw)", "priority": 1, "tags": ["seafood"] },
   { "local": ["huître"], "target_id": "FOODON:03301703", "target_label": "oyster (raw)", "priority": 1, "tags": ["seafood"] },
 
-  { "local": ["poulet", "poul"], "target_id": "FOODON:02020231", "target_label": "chicken breast (skinless)", "priority": 2, "notes": "Use specific chicken cuts by recipe; this is a general fallback ID.", "tags": ["meat"] },
+  { "local": ["poulet", "poul"], "target_id": "FOODON:02020149", "target_label": "chicken (generic)", "priority": 1, "notes": "Map generic poulet to the same ID your recipes use.", "tags": ["meat"] },
   { "local": ["pilon de poulet"], "target_id": "FOODON:02020237", "target_label": "chicken drumstick (skinless)", "priority": 1, "tags": ["meat"] },
   { "local": ["cuisse de poulet"], "target_id": "FOODON:02020223", "target_label": "chicken leg", "priority": 1, "tags": ["meat"] },
   { "local": ["haut de cuisse"], "target_id": "FOODON:02020228", "target_label": "chicken thigh (skinless, boneless)", "priority": 1, "tags": ["meat"] },
@@ -142,7 +145,7 @@
   { "local": ["saucisse porc"], "target_id": "FOODON:00002729", "target_label": "pork sausage", "priority": 1, "tags": ["meat"] },
   { "local": ["côte porc"], "target_id": "FOODON:00004490", "target_label": "pork chop", "priority": 1, "tags": ["meat"] },
 
-  { "local": ["yaourt", "yoghourt", "yogourt"], "target_id": "FOODON:00001016", "target_label": "cabbage food product", "priority": 99, "notes": "Placeholder to avoid accidental map—remove if you add proper yogurt IDs elsewhere.", "tags": [] },
+  { "local": ["yaourt", "yoghourt", "yogourt"], "target_id": "FOODON:03302458", "target_label": "yogurt (plain)", "priority": 1, "notes": "Fixed erroneous mapping.", "tags": ["dairy"] },
 
   { "local": ["lait évaporé"], "target_id": "FOODON:00005485", "target_label": "evaporated milk (with added vitamin A)", "priority": 1, "tags": ["dairy"] },
   { "local": ["lait concentré"], "target_id": "FOODON:03542722", "target_label": "27220 - condensed milk", "priority": 1, "tags": ["dairy"] },

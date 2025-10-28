@@ -11,9 +11,9 @@ from services.substitution_service import SubstitutionService
 class RetrievalService:
     """
     End-to-end retrieval + adaptation:
-      - normalize inputs to FoodOn IDs
-      - score recipes
-      - substitute missing/avoid ingredients
+    - normalize inputs to FoodOn IDs
+    - score recipes
+    - substitute missing/avoid ingredients
     """
 
     def __init__(self) -> None:
@@ -26,8 +26,8 @@ class RetrievalService:
     def search(
         self,
         have_terms_or_objs: List[Any],
-        avoid_ids: Optional[Set[str]] = None,   # accept this…
-        avoid: Optional[Set[str]] = None,       # …and this (legacy payloads)
+        avoid_ids: Optional[Set[str]] = None,  # accept this…
+        avoid: Optional[Set[str]] = None,      # …and this (legacy payloads)
         diet: Optional[Set[str]] = None,
         avoid_allergens: Optional[Set[str]] = None,
         limit: int = 10,
@@ -112,7 +112,7 @@ class RetrievalService:
         ids: List[str] = []
 
         for x in items or []:
-            # { "id": "FOODON:..." } shortcut
+            # { "id": "FOODON:..." } shortcut (already canonical)
             if isinstance(x, dict) and x.get("id"):
                 ids.append(str(x["id"]))
                 continue
@@ -120,8 +120,10 @@ class RetrievalService:
             # { "label": "tomato" } or plain "tomato"
             term = str(x.get("label") if isinstance(x, dict) and x.get("label") else x)
             rid = self.normalizer.resolve(term)
+
+            # 🔧 FIX: our Normalizer returns {"foodon_id": "...", ...}
             if isinstance(rid, dict):
-                rid = rid.get("id")
+                rid = rid.get("foodon_id") or rid.get("id")
             if isinstance(rid, str):
                 ids.append(rid)
 
@@ -205,7 +207,7 @@ class RetrievalService:
                             "reason": "no suitable substitute found",
                         }
                     )
-                continue
+                    continue
 
             # 2) If user has it, keep as-is
             if fid in have_set:
@@ -251,5 +253,5 @@ class RetrievalService:
         out: List[Dict[str, Any]] = []
         for ing in ings:
             fid = ing.get("id")
-            out.append({**ing, "label": get_label(fid) if fid else None})
+            out.append({**(ing or {}), "label": get_label(fid) if fid else None})
         return out

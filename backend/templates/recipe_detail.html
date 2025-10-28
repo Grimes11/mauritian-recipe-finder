@@ -31,7 +31,9 @@
       <ul id="rd-ingredients" class="list">
         <!-- filled by JS -->
       </ul>
-      <p id="rd-ing-note" class="muted" style="display:none;">(Some ingredient names may display as FoodOn IDs if a friendly label isn’t available.)</p>
+      <p id="rd-ing-note" class="muted" style="display:none;">
+        (Some ingredient names may display as FoodOn IDs if a friendly label isn’t available.)
+      </p>
     </div>
   </article>
 
@@ -119,15 +121,16 @@ function getIndex() {
   return p !== null ? p : null;
 }
 
-// Build a simple id -> label map from /typeahead
+// Build a simple id -> label map from /typeahead (lowercased keys)
 function buildLabelMap(typeaheadList) {
   var map = {};
   if (!typeaheadList || !typeaheadList.length) return map;
   for (var i = 0; i < typeaheadList.length; i++) {
     var row = typeaheadList[i];
     if (!row || !row.id) continue;
-    if (!map[row.id]) {
-      map[row.id] = row.term || row.q || row.id;
+    var key = String(row.id).toLowerCase();
+    if (!map[key]) {
+      map[key] = row.term || row.q || row.name || row.id;
     }
   }
   return map;
@@ -135,14 +138,32 @@ function buildLabelMap(typeaheadList) {
 
 function labelFor(id, labelMap) {
   if (!id) return "";
-  if (labelMap && labelMap[id]) return labelMap[id];
+  var key = String(id).toLowerCase();
+  if (labelMap && labelMap[key]) return labelMap[key];
   return id;
+}
+
+// Prefer labels from an extra map (e.g., adapted list), then fallback to TA map
+function labelForWithExtra(id, labelMap, extraMap) {
+  var key = String(id || "").toLowerCase();
+  if (extraMap && extraMap[key]) return extraMap[key];
+  if (labelMap && labelMap[key]) return labelMap[key];
+  return id || "";
+}
+
+// Format as "label (FOODON:xxxxxx)" when we have a friendly label
+function formatLabelWithId(id, label) {
+  var clean = String(label || "").trim();
+  if (!id) return clean || "";
+  if (!clean || /^foodon:/i.test(clean)) return id; // no friendly label
+  return clean + " (" + id + ")";
 }
 
 // Find adapted data for this recipe from sessionStorage (if we came from results)
 function findAdaptedFor(index) {
   try {
-    var raw = sessionStorage.getItem('searchResults');
+    // keep backward compatibility, prefer mrf:last-results
+    var raw = sessionStorage.getItem('mrf:last-results') || sessionStorage.getItem('searchResults');
     if (!raw) return null;
     var payload = JSON.parse(raw);
     if (!payload || !payload.results || !payload.results.length) return null;
@@ -162,26 +183,38 @@ function findAdaptedFor(index) {
 // Renderers
 // -------------------------------
 function renderIngredients(listEl, ings, labelMap) {
-  if (!listEl) return;
+  if (!listEl) return false;
+
   listEl.innerHTML = "";
   if (!ings || !ings.length) {
     var liEmpty = create('li', 'muted');
     liEmpty.textContent = "No ingredients listed.";
     listEl.appendChild(liEmpty);
-    return;
+    return false;
   }
+
+  var anyRawIds = false;
+
   for (var i = 0; i < ings.length; i++) {
     var ing = ings[i] || {};
-    var id = ing.id || "";
+    var id  = ing.id || "";
     var qty = ing.qty || "";
+
     var li = create('li');
     var name = labelFor(id, labelMap);
-    li.textContent = (name ? name : id) + (qty ? (" — " + qty) : "");
+    var showId = !name || name === id; // only show the ID if we don't have a nicer label
+
+    li.textContent = (name || id) + (qty ? (" — " + qty) : "");
+    if (!showId && id) li.title = id;  // keep the ID accessible via tooltip
+    if (showId) anyRawIds = true;
+
     listEl.appendChild(li);
   }
+
+  return anyRawIds; // tell caller whether any raw IDs were shown
 }
 
-function renderChangeLog(listEl, changes, labelMap) {
+function renderChangeLog(listEl, changes, labelMap, extraMap) {
   if (!listEl) return;
   listEl.innerHTML = "";
   if (!changes || !changes.length) {
@@ -194,24 +227,22 @@ function renderChangeLog(listEl, changes, labelMap) {
     var c = changes[i] || {};
     var typ = c.type || "change";
     var fromId = c.from_id || "";
-    var toId = c.to_id || "";
-    var reason = c.reason || "";
-    var score = typeof c.score === 'number' ? c.score : null;
+    var toId   = c.to_id   || "";
+    var reason = c.reason  || "";
+    var score  = typeof c.score === 'number' ? c.score : null;
 
-    var fromLabel = labelFor(fromId, labelMap);
-    var toLabel = toId ? labelFor(toId, labelMap) : "";
+    var fromLabel = labelForWithExtra(fromId, labelMap, extraMap);
+    var toLabel   = labelForWithExtra(toId,   labelMap, extraMap);
+
+    var fromDisp = formatLabelWithId(fromId, fromLabel);
+    var toDisp   = toId ? formatLabelWithId(toId, toLabel) : "";
 
     var li = create('li');
     var msg = "";
-    if (typ === "avoid_sub") {
-      msg = "Replaced avoided “" + fromLabel + "” with “" + toLabel + "”.";
-    } else if (typ === "missing_sub") {
-      msg = "Replaced missing “" + fromLabel + "” with “" + toLabel + "”.";
-    } else if (typ === "avoid_remove") {
-      msg = "Removed avoided “" + fromLabel + "”.";
-    } else {
-      msg = "Changed “" + fromLabel + "” to “" + toLabel + "”.";
-    }
+    if (typ === "avoid_sub")       msg = "Replaced avoided “" + fromDisp + "” with “" + toDisp + "”.";
+    else if (typ === "missing_sub") msg = "Replaced missing “" + fromDisp + "” with “" + toDisp + "”.";
+    else if (typ === "avoid_remove") msg = "Removed avoided “" + fromDisp + "”.";
+    else                              msg = "Changed “" + fromDisp + "” to “" + toDisp + "”.";
     if (reason) msg += " Reason: " + reason + ".";
     if (score !== null) msg += " Score: " + score;
 
@@ -237,7 +268,8 @@ function renderSteps(listEl, steps) {
 }
 
 // -------------------------------
-/* Main: fetch & paint */
+// Main: fetch & paint
+// -------------------------------
 document.addEventListener('DOMContentLoaded', function () {
   var idx = getIndex();
   if (idx === null) {
@@ -276,10 +308,8 @@ document.addEventListener('DOMContentLoaded', function () {
     text(elServ, recipe.servings || '—');
 
     // Ingredients (original)
-    renderIngredients(elIng, recipe.ingredients || [], labelMap);
-    if (elIng && elIng.children && elIng.children.length && elIng.children[0].textContent.indexOf('FOODON:') !== -1) {
-      elIngNote.style.display = '';
-    }
+    var hasRawIds = renderIngredients(elIng, recipe.ingredients || [], labelMap);
+    elIngNote.style.display = hasRawIds ? '' : 'none';
 
     // Steps
     renderSteps(qs('#rd-steps'), recipe.steps || []);
@@ -304,7 +334,7 @@ document.addEventListener('DOMContentLoaded', function () {
           label: item.label || labelFor(item.id, labelMap)
         });
       }
-      // Render
+      // Render adapted list
       elIngAdapt.innerHTML = '';
       if (adaptedList.length === 0) {
         var liA = create('li', 'muted');
@@ -314,13 +344,26 @@ document.addEventListener('DOMContentLoaded', function () {
         for (var j = 0; j < adaptedList.length; j++) {
           var a = adaptedList[j];
           var li = create('li');
-          var nm = a.label || labelFor(a.id, labelMap);
-          li.textContent = (nm ? nm : a.id) + (a.qty ? (" — " + a.qty) : "");
+          var lbl = a.label || labelFor(a.id, labelMap);
+          if (lbl && a.id && lbl !== a.id) {
+            li.textContent = lbl + " (" + a.id + ")" + (a.qty ? (" — " + a.qty) : "");
+          } else {
+            li.textContent = (a.id || lbl || "ingredient") + (a.qty ? (" — " + a.qty) : "");
+            li.classList.add('id-only');
+          }
           elIngAdapt.appendChild(li);
         }
       }
 
-      renderChangeLog(elChange, adapted.change_log || [], labelMap);
+      // Build an extra id->label map from adapted data (server-attached labels)
+      var extraMap = {};
+      for (var k = 0; k < adaptedList.length; k++) {
+        var ai = adaptedList[k];
+        if (ai && ai.id) extraMap[String(ai.id).toLowerCase()] = ai.label || labelFor(ai.id, labelMap);
+      }
+
+      // Use the enriched map to label change log entries
+      renderChangeLog(elChange, adapted.change_log || [], labelMap, extraMap);
     }
   }).catch(function () {
     text(qs('#rd-title'), 'Recipe');
